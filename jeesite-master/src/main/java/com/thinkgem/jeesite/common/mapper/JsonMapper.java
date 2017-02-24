@@ -251,7 +251,7 @@ public class JsonMapper extends ObjectMapper {
 		map = Maps.newHashMap();
 		map.put("id", 2);
 		map.put("pId", 1);
-		map.put("name", "你好");
+		map.put("name", map);
 		map.put("open", true);
 		list.add(map);
 		String json = JsonMapper.getInstance().toJson(list);

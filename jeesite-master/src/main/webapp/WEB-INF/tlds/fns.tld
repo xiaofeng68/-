@@ -252,4 +252,27 @@
     <function-signature>java.lang.String getSettingContent(java.lang.String)</function-signature>
     <example>${fns:getSettingContent(code)}</example>  
   </function>
+  <!-- TrainUtils -->
+  <function>
+    <description>获取培训信息标签</description>
+    <name>getTrains</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.TrainUtils</function-class>
+    <function-signature>java.util.List getTrains(java.lang.String)</function-signature>
+    <example>${fns:getTrains(type)}</example>  
+  </function>
+  <!-- CourseUtils -->
+  <function>
+    <description>获取课程标签</description>
+    <name>getCourseTypeById</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils</function-class>
+    <function-signature>java.lang.Object getCourseTypeById(java.lang.String)</function-signature>
+    <example>${fns:getCourseTypeById(id)}</example>  
+  </function>
+  <function>
+    <description>获取课程标签</description>
+    <name>getCourseTypes</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils</function-class>
+    <function-signature>java.util.List getCourseTypes(java.lang.String)</function-signature>
+    <example>${fns:getCourseTypes(pid)}</example>  
+  </function>
 </taglib>

@@ -20,10 +20,9 @@
 			        <div class="swiper-button-next"></div>
 			        <div class="swiper-button-prev"></div>
 			        <div class="swiper-wrapper">
-			        	<a href="http://j.jikexueyuan.com/train/ux?jike_campaign=online&amp;jike_location=www_index_cf&amp;jike_content=161130" target="_blank" value="线上就业班UX上线" class="swiper-slide" style=" background: url(http://a1.jikexueyuan.com/home/201611/28/153f/583bc9ed15786.jpg) center center no-repeat rgb(245, 245, 245);"></a>
-			            <a href="http://j.jikexueyuan.com/train/web-offline?utm_source=jike&amp;utm_medium=www_index_a_cf&amp;utm_campaign=jiuye_yingxiao_chen&amp;utm_content=v20160913" target="_blank" value="web大前端线下培训班" class="swiper-slide" style=" background: url(http://a1.jikexueyuan.com/home/201609/26/2027/57e8bdeeea6b8.jpg) center center no-repeat rgb(245, 245, 245);"></a>
-	                    <a href="http://j.jikexueyuan.com/train/php?jike_campaign=ganenjie&amp;jike_location=www_index_cf&amp;jike_content=161130" target="_blank" value="php线上就业班" class="swiper-slide" style=" background: url(http://a1.jikexueyuan.com/home/201611/24/1d6b/5836e7ecd1e2d.jpg) center center no-repeat rgb(245, 245, 245);"></a>
-	                    <a href="https://www.qcloud.com/training/courses/video-dev?utm_source=sylunbo&amp;utm_medium=1216course&amp;utm_campaign=jikexueyuan " target="_blank" value="腾讯云0到1打造直播平台" class="swiper-slide" style=" background: url(http://a1.jikexueyuan.com/home/201611/29/50de/583d50a6c9571.jpg) center center no-repeat rgb(245, 245, 245);"></a>
+    				<c:forEach items="${fns:getTrains(2)}" var="train" varStatus="status">
+			        	<a href="${ctx }/train/train-${train.code}${urlSuffix}" target="_blank" value="${train.name }" class="swiper-slide" style=" background: url(${train.img}) center center no-repeat rgb(245, 245, 245);"></a>
+			        </c:forEach>
 			        </div>
 			    </div>
 			</section>
@@ -42,37 +41,12 @@
 			</section>
 			<section class="jk-huodong" id="banner02-1"></section>
 			<section class="jk-jiuye">
-				<a
-					href="http://j.jikexueyuan.com/train/php?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_1&jike_content=161130"
-					class="jk-ban php" target="_blank"> <img
-					src="${ctxStaticTheme }/images/9_php_d5fcdb8.png">
-					<p>PHP工程师就业班</p>
-				</a> <a
-					href="http://j.jikexueyuan.com/train/web?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_2&jike_content=161130"
-					class="jk-ban web" target="_blank"> <img
-					src="${ctxStaticTheme }/images/4_html5_9ab5f1c.png">
-					<p>WEB大前端工程师就业班</p>
-				</a> <a
-					href="http://j.jikexueyuan.com/train/ux?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_3&jike_content=161130"
-					class="jk-ban ui" target="_blank"> <img
-					src="${ctxStaticTheme }/images/UI_a5eba34.png">
-					<p>UI/UE设计师就业班</p>
-				</a> <a
-					href="http://j.jikexueyuan.com/train/android?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_4&jike_content=161130"
-					class="jk-ban android" target="_blank"> <img
-					src="${ctxStaticTheme }/images/1_android_d6730f3.png">
-					<p>Android工程师就业班</p>
-				</a> <a
-					href="http://j.jikexueyuan.com/train/ios?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_5&jike_content=161130"
-					class="jk-ban ios" target="_blank"> <img
-					src="${ctxStaticTheme }/images/2_iOS_5e77ff4.png">
-					<p>iOS工程师就业班</p>
-				</a> <a
-					href="http://j.jikexueyuan.com/train/javaweb?jike_campaign=jiuyeban&jike_location=www_index_jiuye_imagelink_6&jike_content=161130"
-					class="jk-ban javaweb" target="_blank"> <img
-					src="${ctxStaticTheme }/images/10_javaweb_26f34e5.png">
-					<p>Java Web工程师就业班</p>
-				</a>
+				<c:forEach items="${fns:getTrains(1)}" var="train" varStatus="status">
+					<a href="${ctx }/train/train-${train.code}${urlSuffix}"
+						class="jk-ban ${train.code }" target="_blank"> <img src="${train.img }">
+						<p>${train.name }</p>
+					</a>
+				</c:forEach>
 			</section>
 		</div>
 		<section class="jk-sku">
@@ -123,11 +97,9 @@
 		<section class="jk-college">
 			<h2>职业学院</h2>
 			<ul>
-				<li class="web"><a href="/zhiye/web"> <img src="${ctxStaticTheme }/images/bgweb_054d9d5.jpg"> <i></i> <span>Web 前端工程师</span></a></li>
-				<li class="python"><a href="/zhiye/python"> <img src="${ctxStaticTheme }/images/bgpython_c21a999.jpg"> <i></i> <span>Python Web 工程师</span></a></li>
-				<li class="go"><a href="/zhiye/go"> <img src="${ctxStaticTheme }/images/bggo_6ac4e5b.jpg"> <i></i> <span>GO 语言工程师</span></a></li>
-				<li class="ios"><a href="/zhiye/ios"> <img src="${ctxStaticTheme }/images/bgios_cadb5b0.jpg"> <i></i> <span>iOS 工程师</span></a></li>
-				<li class="more"><a href="javascript:;"> <img src="${ctxStaticTheme }/images/bgmore_b32bab9.jpg"> <span>更多职业 敬请期待</span></a></li>
+			<c:forEach items="${fns:getTrains(3)}" var="train" varStatus="status">
+				<li class="${train.code }"><a href="${ctx }/train/train-${train.code}${urlSuffix}"> <img src="${train.img }"> <i></i> <span>${train.name }</span></a></li>
+			</c:forEach>				
 			</ul>
 		</section>
 		<section class="jk-vip">

@@ -22,15 +22,15 @@
 				<nav>
 					<ul class="header-nav">
 						<li><a href="${ctx }/${frontPath }index-${site.id }${urlSuffix }">首页</a></li>
-						<li>职业学院<i class="arrow-icon"></i>
+						<c:set var="courseType1" value="${fns:getCourseTypeById(1)}"></c:set>
+						<li>${courseType1.name }<i class="arrow-icon"></i>
 							<div class="submenu school-list">
-								<h3>前端学院</h3>
-								<a href="http://www.jikexueyuan.com/zhiye/web"><i class="web-icon"></i>Web 前端工程师</a>
-								<h3>后端学院</h3>
-								<a href="http://www.jikexueyuan.com/zhiye/python"><i class="python-icon"></i>Python Web工程师</a>
-								<a href="http://www.jikexueyuan.com/zhiye/go"><i class="go-icon"></i>Go语言工程师</a>
-								<h3>移动学院</h3>
-								<a href="http://www.jikexueyuan.com/zhiye/ios"><i class="ios-icon"></i>iOS工程师</a>
+							<c:forEach var="courseType" items="${fns:getCourseTypes(courseType1.id)}">
+								<h3>${courseType.name }</h3>
+								<c:forEach var="type" items="${fns:getCourseTypes(courseType.id)}">
+								<a href="${ctx }/train/course-${type.code}-${type.id}${urlSuffix}"><i class="${type.code }-icon"></i>Web 前端工程师</a>
+								</c:forEach>
+							</c:forEach>
 							</div>
 						</li>
 						<li>会员课程<i class="arrow-icon"></i>
