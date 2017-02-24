@@ -33,11 +33,13 @@
 			<li><label>老师姓名：</label>
 				<form:input path="name" htmlEscape="false" maxlength="20" class="input-medium"/>
 			</li>
-			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
-			<li class="clearfix"></li>
-			<li><shiro:hasPermission name="tran:teacher:edit"><div class="form-actions pagination-left">
+			<li class="btns">
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
+			<shiro:hasPermission name="tran:teacher:edit">
 			<input id="btnSubmit" class="btn btn-primary" type="button" value="保存排序" onclick="updateSort();"/>
-		</div></shiro:hasPermission></li>
+			</shiro:hasPermission>
+			</li>
+			<li class="clearfix"></li>
 		</ul>
 	</form:form>
 	<sys:message content="${message}"/>
@@ -46,9 +48,9 @@
 		<thead>
 			<tr>
 				<th>老师姓名</th>
-				<th>头像</th>
 				<th>创建者</th>
 				<th>排序</th>
+				<th>状态</th>
 				<th>创建时间</th>
 				<th>更新时间</th>
 				<shiro:hasPermission name="tran:teacher:edit"><th>操作</th></shiro:hasPermission>
@@ -61,9 +63,6 @@
 					${teacher.name}
 				</a></td>
 				<td>
-					<img src="${teacher.img}" width="80"/>
-				</td>
-				<td>
 					${teacher.createBy.name}
 				</td>
 				<td style="text-align:center;">
@@ -75,6 +74,7 @@
 						${teacher.sort}
 					</shiro:lacksPermission>
 				</td>
+				<td>${fns:getDictLabel(teacher.state, 'Teacher_state', '')}</td>
 				<td>
 					<fmt:formatDate value="${teacher.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>

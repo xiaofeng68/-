@@ -5,27 +5,24 @@
 	<sql id="courseColumns">
 		a.id AS "id",
 		a.name AS "name",
-		a.discontent AS "discontent",
-		a.level AS "level",
-		a.type AS "type",
-		a.contype AS "contype",
-		a.hots AS "hots",
-		a.content AS "content",
-		a.bg AS "bg",
-		a.envriment AS "envriment",
-		a.ziliao AS "ziliao",
-		a.shrq AS "shrq",
+		a.teacherid AS "teacherid",
+		a.des AS "des",
+		a.price AS "price",
+		a.nprice AS "nprice",
+		a.vipprice AS "vipprice",
+		a.timelength AS "timelength",
+		a.days AS "days",
+		a.students AS "students",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.remarks AS "remarks",
 		a.del_flag AS "delFlag",
-		u.name AS "createBy.name"
+		a.type AS "type"
 	</sql>
 	
 	<sql id="courseJoins">
-		JOIN sys_user u ON u.id = a.create_by
 	</sql>
     
 	<select id="get" resultType="Course">
@@ -43,17 +40,14 @@
 		<include refid="courseJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-			<if test="id != null and id != ''">
-				AND a.id = #{id}
-			</if>
 			<if test="name != null and name != ''">
 				AND a.name LIKE 
 					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
 					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
 					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
 			</if>
-			<if test="level != null and level != ''">
-				AND a.level = #{level}
+			<if test="teacherid != null and teacherid != ''">
+				AND a.teacherid = #{teacherid}
 			</if>
 			<if test="type != null and type != ''">
 				AND a.type = #{type}
@@ -90,59 +84,56 @@
 	<insert id="insert">
 		INSERT INTO t_course(
 			name,
-			discontent,
-			level,
-			type,
-			contype,
-			hots,
-			content,
-			bg,
-			envriment,
-			ziliao,
-			shrq,
+			teacherid,
+			des,
+			price,
+			nprice,
+			vipprice,
+			timelength,
+			days,
+			students,
 			create_by,
 			create_date,
 			update_by,
 			update_date,
 			remarks,
-			del_flag
+			del_flag,
+			type
 		) VALUES (
 			#{name},
-			#{discontent},
-			#{level},
-			#{type},
-			#{contype},
-			#{hots},
-			#{content},
-			#{bg},
-			#{envriment},
-			#{ziliao},
-			#{shrq},
+			#{teacherid},
+			#{des},
+			#{price},
+			#{nprice},
+			#{vipprice},
+			#{timelength},
+			#{days},
+			#{students},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
 			#{updateDate},
 			#{remarks},
-			#{delFlag}
+			#{delFlag},
+			#{type}
 		)
 	</insert>
 	
 	<update id="update">
 		UPDATE t_course SET 	
 			name = #{name},
-			discontent = #{discontent},
-			level = #{level},
-			type = #{type},
-			contype = #{contype},
-			hots = #{hots},
-			content = #{content},
-			bg = #{bg},
-			envriment = #{envriment},
-			ziliao = #{ziliao},
-			shrq = #{shrq},
+			teacherid = #{teacherid},
+			des = #{des},
+			price = #{price},
+			nprice = #{nprice},
+			vipprice = #{vipprice},
+			timelength = #{timelength},
+			days = #{days},
+			students = #{students},
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
-			remarks = #{remarks}
+			remarks = #{remarks},
+			type = #{type}
 		WHERE id = #{id}
 	</update>
 	

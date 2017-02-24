@@ -36,86 +36,69 @@
 		<div class="control-group">
 			<label class="control-label">课程名称：</label>
 			<div class="controls">
-				<form:input path="name" htmlEscape="false" maxlength="200" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="name" htmlEscape="false" maxlength="200" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">课程简介：</label>
+			<label class="control-label">主讲老师：</label>
 			<div class="controls">
-				<form:input path="discontent" htmlEscape="false" maxlength="200" class="input-xlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">课程类型：初级：1，中级：2，高级：3：</label>
-			<div class="controls">
-				<form:select path="level" class="input-xlarge ">
+				<form:select path="teacherid" class="input-xlarge ">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">免费：0，vip：1，认证：2：</label>
+			<label class="control-label">简介：</label>
 			<div class="controls">
-				<form:select path="type" class="input-xlarge ">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
+				<form:input path="des" htmlEscape="false" maxlength="200" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">内容类型：精讲：1，项目实战，2：</label>
+			<label class="control-label">价格：</label>
 			<div class="controls">
-				<form:select path="contype" class="input-xlarge ">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('CourseType_contype')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
+				<form:input path="price" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">热点：</label>
+			<label class="control-label">优惠价格：</label>
 			<div class="controls">
-				<form:select path="hots" class="input-xlarge ">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('CourseType_hots')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
+				<form:input path="nprice" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">核心内容：</label>
+			<label class="control-label">VIP价格：</label>
 			<div class="controls">
-				<form:textarea path="content" htmlEscape="false" rows="4" class="input-xxlarge "/>
+				<form:input path="vipprice" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">课程背景：</label>
+			<label class="control-label">时长：</label>
 			<div class="controls">
-				<form:textarea path="bg" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge "/>
+				<form:input path="timelength" htmlEscape="false" maxlength="11" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">软件环境：</label>
+			<label class="control-label">有效期：</label>
 			<div class="controls">
-				<form:checkboxes path="envriment" items="${fns:getDictList('CourseType_envriment')}" itemLabel="label" itemValue="value" htmlEscape="false" class=""/>
+				<form:input path="days" htmlEscape="false" maxlength="11" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">是否提供资料：1：是：</label>
+			<label class="control-label">学习人数：</label>
 			<div class="controls">
-				<form:radiobuttons path="ziliao" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false" class=""/>
+				<form:input path="students" htmlEscape="false" maxlength="11" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">适合人群：</label>
-			<div class="controls">
-				<form:checkboxes path="shrq" items="${fns:getDictList('CourseType_shrq')}" itemLabel="label" itemValue="value" htmlEscape="false" class=""/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">备注信息：</label>
+			<label class="control-label">课程详情：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">课程类型：</label>
+			<div class="controls">
 			</div>
 		</div>
 		<div class="form-actions">

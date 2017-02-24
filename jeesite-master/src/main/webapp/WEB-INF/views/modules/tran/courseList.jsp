@@ -25,23 +25,16 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>id：</label>
-				<form:input path="id" htmlEscape="false" maxlength="11" class="input-medium"/>
-			</li>
 			<li><label>课程名称：</label>
 				<form:input path="name" htmlEscape="false" maxlength="200" class="input-medium"/>
 			</li>
-			<li><label>课程类型：初级：1，中级：2，高级：3：</label>
-				<form:select path="level" class="input-medium">
+			<li><label>主讲老师：</label>
+				<form:select path="teacherid" class="input-medium">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
 			</li>
-			<li><label>免费：0，vip：1，认证：2：</label>
-				<form:select path="type" class="input-medium">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
+			<li><label>课程类型：</label>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
@@ -51,11 +44,18 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>课程名称</th>
-				<th>课程类型：初级：1，中级：2，高级：3</th>
+				<th>主讲老师</th>
+				<th>价格</th>
+				<th>优惠价格</th>
+				<th>VIP价格</th>
+				<th>时长</th>
+				<th>有效期</th>
+				<th>学习人数</th>
+				<th>创建者</th>
+				<th>创建时间</th>
 				<th>更新时间</th>
-				<th>备注信息</th>
+				<th>课程类型</th>
 				<shiro:hasPermission name="tran:course:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -63,19 +63,40 @@
 		<c:forEach items="${page.list}" var="course">
 			<tr>
 				<td><a href="${ctx}/tran/course/form?id=${course.id}">
-					${course.id}
+					${course.name}
 				</a></td>
 				<td>
-					${course.name}
+					${fns:getDictLabel(course.teacherid, '', '')}
 				</td>
 				<td>
-					${fns:getDictLabel(course.level, '', '')}
+					${course.price}
+				</td>
+				<td>
+					${course.nprice}
+				</td>
+				<td>
+					${course.vipprice}
+				</td>
+				<td>
+					${course.timelength}
+				</td>
+				<td>
+					${course.days}
+				</td>
+				<td>
+					${course.students}
+				</td>
+				<td>
+					${course.createBy.id}
+				</td>
+				<td>
+					<fmt:formatDate value="${course.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
 				<td>
 					<fmt:formatDate value="${course.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
 				<td>
-					${course.remarks}
+					${course.type}
 				</td>
 				<shiro:hasPermission name="tran:course:edit"><td>
     				<a href="${ctx}/tran/course/form?id=${course.id}">修改</a>
