@@ -275,4 +275,20 @@
     <function-signature>java.util.List getCourseTypes(java.lang.String)</function-signature>
     <example>${fns:getCourseTypes(pid)}</example>  
   </function>
+  <!-- TeacherUtils -->
+  <function>
+    <description>获取老师列表标签</description>
+    <name>getTeacherList</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.TeacherUtils</function-class>
+    <function-signature>java.util.List getTeacherList(java.lang.String)</function-signature>
+    <example>${fns:getTeacherList(code)}</example>  
+  </function>
+  <function>
+    <description>获取老师信息标签</description>
+    <name>getTeacher</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.TeacherUtils</function-class>
+    <function-signature>java.util.List getTeacher(java.lang.String)</function-signature>
+    <example>${fns:getTeacher(id)}</example>  
+  </function>
+	  
 </taglib>

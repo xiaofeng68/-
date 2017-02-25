@@ -17,8 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.common.utils.StringUtils;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.tran.entity.Course;
 import com.thinkgem.jeesite.modules.tran.service.CourseService;
 
@@ -79,5 +79,4 @@ public class CourseController extends BaseController {
 		addMessage(redirectAttributes, "删除课程成功");
 		return "redirect:"+Global.getAdminPath()+"/tran/course/?repage";
 	}
-
 }

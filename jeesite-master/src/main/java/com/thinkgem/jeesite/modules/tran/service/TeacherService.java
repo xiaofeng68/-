@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
 import com.thinkgem.jeesite.modules.tran.entity.Teacher;
+import com.thinkgem.jeesite.modules.tran.utils.TeacherUtils;
 import com.thinkgem.jeesite.modules.tran.dao.TeacherDao;
 
 /**
@@ -42,6 +43,7 @@ public class TeacherService extends CrudService<TeacherDao, Teacher> {
                     teacher.getContent()));
         }
 		super.save(teacher);
+		TeacherUtils.clearCache(teacher);
 	}
 	
 	@Transactional(readOnly = false)

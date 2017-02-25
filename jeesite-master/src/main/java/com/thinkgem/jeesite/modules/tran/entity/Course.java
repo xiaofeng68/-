@@ -16,15 +16,17 @@ public class Course extends DataEntity<Course> {
 	
 	private static final long serialVersionUID = 1L;
 	private String name;		// 课程名称
-	private String teacherid;		// 主讲老师
-	private String des;		// 简介
+	private Teacher teacher;		// 主讲老师
+	private String des;		// 详情
 	private String price;		// 价格
 	private String nprice;		// 优惠价格
 	private String vipprice;		// VIP价格
 	private String timelength;		// 时长
 	private String days;		// 有效期
 	private String students;		// 学习人数
-	private String type;		// 课程类型
+	private CourseType courseType;// 课程类型
+	private String contype;//课程分类
+	private String img;//封面
 	
 	public Course() {
 		super();
@@ -43,16 +45,6 @@ public class Course extends DataEntity<Course> {
 		this.name = name;
 	}
 	
-	@Length(min=0, max=11, message="主讲老师长度必须介于 0 和 11 之间")
-	public String getTeacherid() {
-		return teacherid;
-	}
-
-	public void setTeacherid(String teacherid) {
-		this.teacherid = teacherid;
-	}
-	
-	@Length(min=0, max=200, message="简介长度必须介于 0 和 200 之间")
 	public String getDes() {
 		return des;
 	}
@@ -112,13 +104,36 @@ public class Course extends DataEntity<Course> {
 		this.students = students;
 	}
 	
-	@Length(min=0, max=11, message="课程类型长度必须介于 0 和 11 之间")
-	public String getType() {
-		return type;
-	}
+    public CourseType getCourseType() {
+        return courseType;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setCourseType(CourseType courseType) {
+        this.courseType = courseType;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getContype() {
+        return contype;
+    }
+
+    public void setContype(String contype) {
+        this.contype = contype;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 	
 }

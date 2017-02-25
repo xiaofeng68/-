@@ -5,15 +5,15 @@ package com.thinkgem.jeesite.modules.tran.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
-import com.thinkgem.jeesite.common.utils.StringUtils;
-import com.thinkgem.jeesite.modules.tran.entity.Course;
 import com.thinkgem.jeesite.modules.tran.dao.CourseDao;
+import com.thinkgem.jeesite.modules.tran.entity.Course;
+import com.thinkgem.jeesite.modules.tran.utils.CourseUtils;
 
 /**
  * 课程管理Service
@@ -40,7 +40,12 @@ public class CourseService extends CrudService<CourseDao, Course> {
 	
 	@Transactional(readOnly = false)
 	public void save(Course course) {
+	    if (course.getDes()!=null){
+	        course.setDes(StringEscapeUtils.unescapeHtml4(
+	                course.getDes()));
+        }
 		super.save(course);
+		CourseUtils.clearCache(course);
 	}
 	
 	@Transactional(readOnly = false)

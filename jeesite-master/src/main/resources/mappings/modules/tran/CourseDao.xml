@@ -5,7 +5,7 @@
 	<sql id="courseColumns">
 		a.id AS "id",
 		a.name AS "name",
-		a.teacherid AS "teacherid",
+		a.teacherid AS "teacher.id",
 		a.des AS "des",
 		a.price AS "price",
 		a.nprice AS "nprice",
@@ -19,10 +19,16 @@
 		a.update_date AS "updateDate",
 		a.remarks AS "remarks",
 		a.del_flag AS "delFlag",
-		a.type AS "type"
+		a.type AS "courseType.id",
+		a.contype AS "contype",
+		a.img AS "img",
+		u2.name AS "courseType.name",
+		u3.name AS "teacher.name"
 	</sql>
 	
 	<sql id="courseJoins">
+		LEFT JOIN t_course_type u2 ON u2.id = a.type
+		LEFT JOIN t_teacher u3 ON u3.id = a.teacherid
 	</sql>
     
 	<select id="get" resultType="Course">
@@ -46,11 +52,11 @@
 					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
 					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
 			</if>
-			<if test="teacherid != null and teacherid != ''">
-				AND a.teacherid = #{teacherid}
+			<if test="teacher!=null and teacher.id != null and teacher.id != ''">
+				AND a.teacherid = #{teacher.id}
 			</if>
-			<if test="type != null and type != ''">
-				AND a.type = #{type}
+			<if test="courseType!=null and courseType.id != null and courseType.id != ''">
+				AND a.type = #{courseType.id}
 			</if>
 		</where>
 		<choose>
@@ -98,10 +104,12 @@
 			update_date,
 			remarks,
 			del_flag,
-			type
+			type,
+			contype,
+			img
 		) VALUES (
 			#{name},
-			#{teacherid},
+			#{teacher.id},
 			#{des},
 			#{price},
 			#{nprice},
@@ -115,14 +123,16 @@
 			#{updateDate},
 			#{remarks},
 			#{delFlag},
-			#{type}
+			#{courseType.id},
+			#{contype},
+			#{img}
 		)
 	</insert>
 	
 	<update id="update">
 		UPDATE t_course SET 	
 			name = #{name},
-			teacherid = #{teacherid},
+			teacherid = #{teacher.id},
 			des = #{des},
 			price = #{price},
 			nprice = #{nprice},
@@ -133,7 +143,9 @@
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
 			remarks = #{remarks},
-			type = #{type}
+			type = #{courseType.id},
+			contype = #{contype},
+			img = #{img}
 		WHERE id = #{id}
 	</update>
 	

@@ -65,27 +65,29 @@
 						<!-- 内容 -->
 						<!-- 成长计划 -->
 						<ul class="grow-plan-box cf">
+							<c:forEach var="course" items="${congtype1 }">
 							<li><a
 								href="http://www.jikexueyuan.com/zhiye/course/9.html?type=7"
 								target="_blank"> <img
-									src="images/attach-b2be786c-0fe2-44a9-9dc5-e3cdb7ce06a9.jpg"
-									alt="Web前端工程师职业规划" id="9" class="grow-img">
+									src="${course.img }"
+									alt="${course.name }" id="9" class="grow-img">
 									<div class="grow-data">
 										<h3>
-											Web前端工程师职业规划 <i class="icon-tag-yellow">新</i>
+											${course.name } <i class="icon-tag-yellow">新</i>
 										</h3>
 										<span class="grow-label">免费试学</span> <span
-											class="grow-teacher">主讲: derek</span>
-										<p>本课程主要向大家介绍Web前端工程师的职业背景、行业前景、团队中的定位及所需的技能，同时分享Web前端的学习方法和路径以及将来的职业规划。</p>
+											class="grow-teacher">主讲: ${course.teacher.name }</span>
+										<p>${course.remarks }</p>
 
-										<span class="list-nowprice">9.00</span> <span
-											class="list-price"><s>￥99.00</s></span>
+										<span class="list-nowprice">￥${course.nprice }</span> <span
+											class="list-price"><s>￥${course.price }</s></span>
 										<div class="grow-nums">
-											<span class="grow-time">0.5 小时</span> <span
+											<span class="grow-time">${course.timelength/60 } 小时</span> <span
 												class="grow-lessons">1 门课</span> <span class="grow-student">3326人学习</span>
 										</div>
 									</div>
 							</a></li>
+							</c:forEach>
 						</ul>
 						<!-- 专项提高 -->
 					</section>
@@ -100,23 +102,25 @@
 						<!-- 成长计划 -->
 						<!-- 专项提高 -->
 						<ul class="increase-box cf">
+							<c:forEach var="course" items="${congtype2 }">
 							<li><a
 								href="http://www.jikexueyuan.com/zhiye/course/39.html?type=8"
 								target="_blank"> <img
-									src="images/4a1029ca-89bc-472c-8bd1-68f97034c5fd.jpg"
-									alt="7小时玩转网页布局开发" class="increase-img">
+									src="${course.img }"
+									alt="${course.name }" class="increase-img">
 									<div class="increase-data">
 										<h3>
-											7小时玩转网页布局开发 <i class="icon-tag-yellow">新</i>
+											${course.name } <i class="icon-tag-yellow">新</i>
 										</h3>
-										<span class="increase-teacher">主讲人: ASMITA</span>
+										<span class="increase-teacher">主讲人: ${course.teacher.name }</span>
 										<div class="pri-num">
-											<span class="list-nowprice">79.00</span> <span
-												class="list-price">￥129.00</span> <span
+											<span class="list-nowprice">${course.nprice }</span> <span
+												class="list-price">￥${course.price }</span> <span
 												class="increase-nums">36人学习</span>
 										</div>
 									</div>
 							</a></li>
+							</c:forEach>
 						</ul>
 					</section>
 					<!-- 授课老师 -->

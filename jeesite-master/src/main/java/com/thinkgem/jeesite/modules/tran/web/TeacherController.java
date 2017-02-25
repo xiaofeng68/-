@@ -3,6 +3,9 @@
  */
 package com.thinkgem.jeesite.modules.tran.web;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,8 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.utils.StringUtils;
@@ -94,5 +100,20 @@ public class TeacherController extends BaseController {
         }
         addMessage(redirectAttributes, "保存讲师排序成功!");
         return "redirect:"+Global.getAdminPath()+"/tran/teacher/?repage";
+    }
+    @ResponseBody
+    @RequestMapping(value = "treeData")
+    public List<Map<String, Object>> treeData(@RequestParam(required=false) String type, HttpServletResponse response) {
+        List<Map<String, Object>> mapList = Lists.newArrayList();
+        List<Teacher> list = teacherService.findList(new Teacher());
+        for (int i=0; i<list.size(); i++){
+            Teacher e = list.get(i);
+            Map<String, Object> map = Maps.newHashMap();
+            map.put("id", "t_"+e.getId());
+            map.put("pId", type);
+            map.put("name", StringUtils.replace(e.getName(), " ", ""));
+            mapList.add(map);
+        }
+        return mapList;
     }
 }

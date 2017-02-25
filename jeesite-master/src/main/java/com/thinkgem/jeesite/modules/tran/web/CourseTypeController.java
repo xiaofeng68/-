@@ -103,21 +103,18 @@ public class CourseTypeController extends BaseController {
 		return "redirect:"+Global.getAdminPath()+"/tran/courseType/?repage";
 	}
 
-	@RequiresPermissions("user")
 	@ResponseBody
 	@RequestMapping(value = "treeData")
-	public List<Map<String, Object>> treeData(@RequestParam(required=false) String extId, HttpServletResponse response) {
+	public List<Map<String, Object>> treeData(HttpServletResponse response) {
 		List<Map<String, Object>> mapList = Lists.newArrayList();
 		List<CourseType> list = courseTypeService.findList(new CourseType());
 		for (int i=0; i<list.size(); i++){
 			CourseType e = list.get(i);
-			if (StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) && e.getParentIds().indexOf(","+extId+",")==-1)){
-				Map<String, Object> map = Maps.newHashMap();
-				map.put("id", e.getId());
-				map.put("pId", e.getParentId());
-				map.put("name", e.getName());
-				mapList.add(map);
-			}
+			Map<String, Object> map = Maps.newHashMap();
+			map.put("id", e.getId());
+			map.put("pId", e.getParentId());
+			map.put("name", e.getName());
+			mapList.add(map);
 		}
 		return mapList;
 	}

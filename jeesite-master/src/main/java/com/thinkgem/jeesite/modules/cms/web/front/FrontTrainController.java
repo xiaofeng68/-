@@ -10,7 +10,9 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.cms.entity.Site;
 import com.thinkgem.jeesite.modules.cms.utils.CmsUtils;
+import com.thinkgem.jeesite.modules.tran.entity.CourseType;
 import com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils;
+import com.thinkgem.jeesite.modules.tran.utils.CourseUtils;
 
 
  /**
@@ -45,7 +47,12 @@ public class FrontTrainController extends BaseController {
         }
         Site site = CmsUtils.getSite(Site.defaultSiteId());
         model.addAttribute("site", site);
-        model.addAttribute("courseType",CourseTypeUtils.getCourseTypeById(id));
+        CourseType courseType = CourseTypeUtils.getCourseTypeById(id);
+        model.addAttribute("courseType",courseType);
+        //获取成长计划课程
+        model.addAttribute("congtype1",CourseUtils.getCourses(id,"1"));
+        //获取专享提高课程
+        model.addAttribute("congtype2",CourseUtils.getCourses(id,"2"));
         return "modules/cms/front/themes/"+site.getTheme()+"/course/"+code;
     }
 }

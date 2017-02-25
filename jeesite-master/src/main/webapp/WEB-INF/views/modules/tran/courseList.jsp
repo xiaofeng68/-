@@ -29,12 +29,14 @@
 				<form:input path="name" htmlEscape="false" maxlength="200" class="input-medium"/>
 			</li>
 			<li><label>主讲老师：</label>
-				<form:select path="teacherid" class="input-medium">
+				<form:select path="teacher.id" class="input-xlarge ">
 					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+					<form:options items="${fns:getTeacherList('')}" itemLabel="name" itemValue="id" htmlEscape="false"/>
 				</form:select>
 			</li>
 			<li><label>课程类型：</label>
+			<sys:treeselect id="type" name="courseType.id" value="${course.courseType.id}" labelName="courseType.name" labelValue="${course.courseType.name}"
+					title="课程类型" url="/tran/courseType/treeData" cssClass="" allowClear="true" notAllowSelectParent="true"/>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
@@ -45,6 +47,8 @@
 		<thead>
 			<tr>
 				<th>课程名称</th>
+				<th>课程类型</th>
+				<th>课程分类</th>
 				<th>主讲老师</th>
 				<th>价格</th>
 				<th>优惠价格</th>
@@ -55,7 +59,6 @@
 				<th>创建者</th>
 				<th>创建时间</th>
 				<th>更新时间</th>
-				<th>课程类型</th>
 				<shiro:hasPermission name="tran:course:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -66,7 +69,13 @@
 					${course.name}
 				</a></td>
 				<td>
-					${fns:getDictLabel(course.teacherid, '', '')}
+					${course.courseType.name}
+				</td>
+				<td>
+					${fns:getDictLabel(course.contype, 'CourseType_contype', '')}
+				</td>
+				<td>
+					${course.teacher.name}
 				</td>
 				<td>
 					${course.price}
@@ -87,16 +96,13 @@
 					${course.students}
 				</td>
 				<td>
-					${course.createBy.id}
+					${course.createBy.name}
 				</td>
 				<td>
 					<fmt:formatDate value="${course.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
 				<td>
 					<fmt:formatDate value="${course.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-				</td>
-				<td>
-					${course.type}
 				</td>
 				<shiro:hasPermission name="tran:course:edit"><td>
     				<a href="${ctx}/tran/course/form?id=${course.id}">修改</a>

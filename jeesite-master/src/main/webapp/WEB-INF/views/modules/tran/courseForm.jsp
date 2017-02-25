@@ -40,18 +40,41 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label">课程类型：</label>
+			<div class="controls">
+				<sys:treeselect id="type" name="courseType.id" value="${course.courseType.id}" labelName="courseType.name" labelValue="${course.courseType.name}"
+					title="课程类型" url="/tran/courseType/treeData" cssClass="" allowClear="true" notAllowSelectParent="true"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">课程分类：</label>
+			<div class="controls">
+				<form:select path="contype" class="input-medium">
+					<form:option value="" label=""/>
+					<form:options items="${fns:getDictList('CourseType_contype')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label">主讲老师：</label>
 			<div class="controls">
-				<form:select path="teacherid" class="input-xlarge ">
+				<form:select path="teacher.id" class="input-xlarge ">
 					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+					<form:options items="${fns:getTeacherList('')}" itemLabel="name" itemValue="id" htmlEscape="false"/>
 				</form:select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">封面：</label>
+			<div class="controls">
+				<input type="hidden" id="img" name="img" value="${course.img}" />
+				<sys:ckfinder input="img" type="thumb" uploadPath="/tran/course" selectMultiple="false"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">简介：</label>
 			<div class="controls">
-				<form:input path="des" htmlEscape="false" maxlength="200" class="input-xlarge "/>
+				<form:textarea htmlEscape="true" path="remarks" rows="4" maxlength="200" class="input-xxlarge"/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -93,12 +116,8 @@
 		<div class="control-group">
 			<label class="control-label">课程详情：</label>
 			<div class="controls">
-				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">课程类型：</label>
-			<div class="controls">
+				<form:textarea id="des" htmlEscape="true" path="des" rows="4" maxlength="200" class="input-xxlarge"/>
+				<sys:ckeditor replace="des" uploadPath="/train/courseType" />
 			</div>
 		</div>
 		<div class="form-actions">
