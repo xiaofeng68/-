@@ -45,6 +45,13 @@
 			<allowedExtensions>swf,flv</allowedExtensions>
 			<deniedExtensions></deniedExtensions>
 		</type>
+		<type name="video">
+			<url>%BASE_URL%video/</url>
+			<directory>%BASE_DIR%video</directory>
+			<maxSize>1024M</maxSize>
+			<allowedExtensions>swf,flv,mp4,avi</allowedExtensions>
+			<deniedExtensions></deniedExtensions>
+		</type>
 	</types>
 	<accessControls>
 		<accessControl>

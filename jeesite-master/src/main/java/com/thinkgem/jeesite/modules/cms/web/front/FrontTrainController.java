@@ -10,6 +10,7 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.cms.entity.Site;
 import com.thinkgem.jeesite.modules.cms.utils.CmsUtils;
+import com.thinkgem.jeesite.modules.tran.entity.Course;
 import com.thinkgem.jeesite.modules.tran.entity.CourseType;
 import com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils;
 import com.thinkgem.jeesite.modules.tran.utils.CourseUtils;
@@ -38,10 +39,10 @@ public class FrontTrainController extends BaseController {
         return "modules/cms/front/themes/"+site.getTheme()+"/train/"+code;
     }
     /**
-     * 跳转到对应的课程页面
+     * 跳转到对应的课程类型页面
      */
     @RequestMapping(value = "course-{code}-{id}${urlSuffix}")
-    public String course(@PathVariable String code,@PathVariable String id, Model model) {
+    public String courseDetail(@PathVariable String code,@PathVariable String id, Model model) {
         if (StringUtils.isEmpty(code)){
             return "redirect:"+Global.getFrontPath();
         }
@@ -54,5 +55,18 @@ public class FrontTrainController extends BaseController {
         //获取专享提高课程
         model.addAttribute("congtype2",CourseUtils.getCourses(id,"2"));
         return "modules/cms/front/themes/"+site.getTheme()+"/course/"+code;
+    }
+    /**   
+     * @说明: 跳转到对应的课程页面
+     */
+    @RequestMapping(value = "course/{id}${urlSuffix}")
+    public String course(@PathVariable String id, Model model) {
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        Course course = CourseUtils.getCourseById(id);
+        model.addAttribute("course",course);
+        CourseType courseType = CourseTypeUtils.getCourseTypeById(course.getCourseType().getId());
+        model.addAttribute("courseType",courseType);
+        return "modules/cms/front/themes/"+site.getTheme()+"/course/detail";
     }
 }

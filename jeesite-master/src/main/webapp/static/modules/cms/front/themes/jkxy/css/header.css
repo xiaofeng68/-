@@ -31,6 +31,7 @@ input::-ms-clear {
 #header a,
 #header i,
 #header h3 {
+	white-space: nowrap;
 	text-decoration: none;
 	padding: 0px;
 	margin: 0px;
@@ -233,6 +234,7 @@ input::-ms-clear {
 	height: 30px;
 	line-height: 30px;
 	padding: 0 15px;
+	white-space:normal;
 }
 #header nav .submenu a:last-child {
 	padding-bottom: 10px;
@@ -506,8 +508,8 @@ input::-ms-clear {
 .school-list i.php-icon,
 .school-list i.java-icon,
 .school-list i.ios-icon,
-.school-list i.android-icon {
-	background: url("../images/allicon3.png") 0 0 no-repeat;
+.school-list i.wechat-icon {
+	background: url("../images/allicon4.png") 0 0 no-repeat;
 	background-position: 0 0;
 	background-size: 16px 148px;
 }
@@ -526,9 +528,12 @@ input::-ms-clear {
 .school-list i.ios-icon {
 	background-position: -2px -82px;
 }
-.school-list i.android-icon {
-	background-position: -2px -58px;
+.school-list i.wechat-icon {
+	background-position: -2px -60px;
 }
+// .school-list i.android-icon {
+// 	background-position: -2px -60px;
+// }
 .loginlist:hover .submenu {
 	display: block;
 	opacity: 1;

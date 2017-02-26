@@ -33,7 +33,27 @@ public class CourseUtils {
 	    }
 	    return list;
 	}
+	@SuppressWarnings("unchecked")
+    public static List<Course> getAllCourses(){
+        List<Course> list = (List<Course>) CacheUtils.get(CACHE_TRAIN_MAP);
+        if(list==null){
+            Course course = new Course();
+            list = courseDao.findList(course);
+            CacheUtils.put(CACHE_TRAIN_MAP, list);
+        }
+        return list;
+    }
+	public static Course getCourseById(String id){
+	    Course course = (Course) CacheUtils.get(CACHE_TRAIN_MAP+":"+id);
+	    if(course==null){
+	        course = courseDao.get(id);
+	        CacheUtils.put(CACHE_TRAIN_MAP+":"+id, course);
+	    }
+	    return course;
+	}
 	public static void clearCache(Course course){
+	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getCourseType().getId()+":"+course.getContype());
+	    CacheUtils.remove(CACHE_TRAIN_MAP);
 	}
 }

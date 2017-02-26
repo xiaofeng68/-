@@ -275,6 +275,13 @@
     <function-signature>java.util.List getCourseTypes(java.lang.String)</function-signature>
     <example>${fns:getCourseTypes(pid)}</example>  
   </function>
+  <function>
+    <description>获取所有课程标签</description>
+    <name>getAllCourses</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseUtils</function-class>
+    <function-signature>java.util.List getAllCourses()</function-signature>
+    <example>${fns:getAllCourses()}</example>  
+  </function>
   <!-- TeacherUtils -->
   <function>
     <description>获取老师列表标签</description>

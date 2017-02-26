@@ -67,7 +67,7 @@
 						<ul class="grow-plan-box cf">
 							<c:forEach var="course" items="${congtype1 }">
 							<li><a
-								href="http://www.jikexueyuan.com/zhiye/course/9.html?type=7"
+								href="${ctx }/train/course/${course.id}${urlSuffix}"
 								target="_blank"> <img
 									src="${course.img }"
 									alt="${course.name }" id="9" class="grow-img">
@@ -104,7 +104,7 @@
 						<ul class="increase-box cf">
 							<c:forEach var="course" items="${congtype2 }">
 							<li><a
-								href="http://www.jikexueyuan.com/zhiye/course/39.html?type=8"
+								href="${ctx }/train/course/${course.id}${urlSuffix}"
 								target="_blank"> <img
 									src="${course.img }"
 									alt="${course.name }" class="increase-img">
@@ -116,7 +116,7 @@
 										<div class="pri-num">
 											<span class="list-nowprice">${course.nprice }</span> <span
 												class="list-price">￥${course.price }</span> <span
-												class="increase-nums">36人学习</span>
+												class="increase-nums">${students }人学习</span>
 										</div>
 									</div>
 							</a></li>

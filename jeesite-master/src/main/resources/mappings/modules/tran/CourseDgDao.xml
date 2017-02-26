@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.tran.dao.CourseDgDao">
+    
+	<sql id="courseDgColumns">
+		a.id AS "id",
+		a.name AS "name",
+		a.des AS "des",
+		a.contype AS "contype",
+		a.sort AS "sort",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag",
+		a.teacherid AS "teacher.id",
+		a.videoid AS "video.id",
+		a.timelength AS "timelength",
+		a.parent_id AS "parent.id",
+		a.parent_ids AS "parentIds",
+		a.code AS "code",
+		a.level AS "level",
+		u.name AS "createBy.name",
+		u2.url AS "video.url",
+		u3.name AS "teacher.name"
+	</sql>
+	
+	<sql id="courseDgJoins">
+		JOIN sys_user u ON u.id = a.create_by
+		LEFT JOIN t_course_video u2 ON u2.id = a.videoid
+		LEFT JOIN t_teacher u3 ON u3.id = a.teacherid
+	</sql>
+    
+	<select id="get" resultType="CourseDg">
+		SELECT 
+			<include refid="courseDgColumns"/>
+		FROM t_course_dg a
+		<include refid="courseDgJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="CourseDg">
+		SELECT 
+			<include refid="courseDgColumns"/>
+		FROM t_course_dg a
+		<include refid="courseDgJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="name != null and name != ''">
+				AND a.name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+			</if>
+			<if test="contype != null and contype != ''">
+				AND a.contype = #{contype}
+			</if>
+			<if test="parent != null and parent.id != null and parent.id != ''">
+				AND a.parent_id = #{parent.id}
+			</if>
+			<if test="parentIds != null and parentIds != ''">
+				AND a.parent_ids LIKE 
+					<if test="dbName == 'oracle'">'%'||#{parentIds}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{parentIds}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{parentIds},'%')</if>
+			</if>
+		</where>
+		ORDER BY a.sort ASC
+	</select>
+	
+	<select id="findAllList" resultType="CourseDg">
+		SELECT 
+			<include refid="courseDgColumns"/>
+		FROM t_course_dg a
+		<include refid="courseDgJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>
+		ORDER BY a.sort ASC
+	</select>
+	
+	<select id="findByParentIdsLike" resultType="CourseDg">
+		SELECT
+			a.id,
+			a.parent_id AS "parent.id",
+			a.parent_ids
+		FROM t_course_dg a
+		<include refid="courseDgJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			AND a.parent_ids LIKE #{parentIds}
+		</where>
+		ORDER BY a.sort ASC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_course_dg(
+			name,
+			des,
+			contype,
+			sort,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag,
+			<if test="video!=null and video.id!=null and video.id!=''">
+			teacherid,
+			videoid,
+			</if>
+			timelength,
+			parent_id,
+			parent_ids,
+			code,
+			level
+		) VALUES (
+			#{name},
+			#{des},
+			#{contype},
+			#{sort},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag},
+			<if test="video!=null and video.id!=null and video.id!=''">
+			#{teacher.id},
+			#{video.id},
+			</if>
+			#{timelength},
+			#{parent.id},
+			#{parentIds},
+			#{code},
+			#{level}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_course_dg SET 	
+			name = #{name},
+			des = #{des},
+			contype = #{contype},
+			sort = #{sort},
+			remarks = #{remarks},
+			<if test="video!=null and video.id!=null and video.id!=''">
+			teacherid = #{teacher.id},
+			videoid = #{video.id},
+			</if>
+			parent_id = #{parent.id},
+			parent_ids = #{parentIds},
+			code = #{code},
+			level = #{level}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateParentIds">
+		UPDATE t_course_dg SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_course_dg SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id} OR parent_ids LIKE '%,'||#{id}||',%'
+	</update>
+	
+</mapper>
