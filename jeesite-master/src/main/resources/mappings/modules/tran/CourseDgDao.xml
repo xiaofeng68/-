@@ -19,17 +19,20 @@
 		a.timelength AS "timelength",
 		a.parent_id AS "parent.id",
 		a.parent_ids AS "parentIds",
-		a.code AS "code",
+		a.courseid AS "course.id",
 		a.level AS "level",
 		u.name AS "createBy.name",
 		u2.url AS "video.url",
-		u3.name AS "teacher.name"
+		u2.name AS "video.name",
+		u3.name AS "teacher.name",
+		u4.name as "course.name"
 	</sql>
 	
 	<sql id="courseDgJoins">
 		JOIN sys_user u ON u.id = a.create_by
 		LEFT JOIN t_course_video u2 ON u2.id = a.videoid
 		LEFT JOIN t_teacher u3 ON u3.id = a.teacherid
+		left join t_course u4 on u4.id = a.courseid
 	</sql>
     
 	<select id="get" resultType="CourseDg">
@@ -113,7 +116,9 @@
 			timelength,
 			parent_id,
 			parent_ids,
-			code,
+			<if test="course!=null and course.id!=null and course.id!=''">
+			courseid,
+			</if>
 			level
 		) VALUES (
 			#{name},
@@ -133,7 +138,9 @@
 			#{timelength},
 			#{parent.id},
 			#{parentIds},
-			#{code},
+			<if test="course!=null and course.id!=null and course.id!=''">
+			#{course.id},
+			</if>
 			#{level}
 		)
 	</insert>
@@ -148,10 +155,13 @@
 			<if test="video!=null and video.id!=null and video.id!=''">
 			teacherid = #{teacher.id},
 			videoid = #{video.id},
+			timelength = #{timelength},
+			</if>
+			<if test="course!=null and course.id!=null and course.id!=''">
+			courseid = #{course.id},
 			</if>
 			parent_id = #{parent.id},
 			parent_ids = #{parentIds},
-			code = #{code},
 			level = #{level}
 		WHERE id = #{id}
 	</update>

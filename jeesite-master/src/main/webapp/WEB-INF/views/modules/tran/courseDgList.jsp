@@ -65,7 +65,7 @@
 				<th>大纲名称</th>
 				<th>大纲类别</th>
 				<th>大纲分类</th>
-				<th>创建者</th>
+				<th>时长</th>
 				<th>创建时间</th>
 				<th>更新时间</th>
 				<th>主讲</th>
@@ -86,7 +86,7 @@
 				{{dict.level}}
 			</td>
 			<td>
-				{{row.createBy.name}}
+				{{row.timelength}}
 			</td>
 			<td>
 				{{row.createDate}}

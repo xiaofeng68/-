@@ -25,7 +25,7 @@ public class CourseDg extends TreeEntity<CourseDg> {
 	private String timelength;		// 时长
 	private CourseDg parent;		// 父级编号
 	private String parentIds;		// 所有父级编号
-	private String code;		// 编号
+	private Course course;		// 所属课程
 	private String level;//大纲分类：
 	public CourseDg() {
 		super();
@@ -114,15 +114,6 @@ public class CourseDg extends TreeEntity<CourseDg> {
 		this.parentIds = parentIds;
 	}
 	
-	@Length(min=0, max=20, message="编号长度必须介于 0 和 20 之间")
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
 	public String getParentId() {
 		return parent != null && parent.getId() != null ? parent.getId() : "0";
 	}
@@ -133,5 +124,13 @@ public class CourseDg extends TreeEntity<CourseDg> {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

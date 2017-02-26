@@ -19,10 +19,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.config.Global;
-import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.common.utils.StringUtils;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.tran.entity.CourseDg;
+import com.thinkgem.jeesite.modules.tran.entity.CourseVideo;
 import com.thinkgem.jeesite.modules.tran.service.CourseDgService;
+import com.thinkgem.jeesite.modules.tran.service.CourseVideoService;
 
 /**
  * 课程大纲Controller
@@ -35,6 +37,8 @@ public class CourseDgController extends BaseController {
 
 	@Autowired
 	private CourseDgService courseDgService;
+	@Autowired
+    private CourseVideoService courseVideoService;
 	
 	@ModelAttribute
 	public CourseDg get(@RequestParam(required=false) String id) {
@@ -60,7 +64,8 @@ public class CourseDgController extends BaseController {
 	@RequestMapping(value = "form")
 	public String form(CourseDg courseDg, Model model) {
 		if (courseDg.getParent()!=null && StringUtils.isNotBlank(courseDg.getParent().getId())){
-			courseDg.setParent(courseDgService.get(courseDg.getParent().getId()));
+		    CourseDg courseDgParent = courseDgService.get(courseDg.getParent().getId());
+			courseDg.setParent(courseDgParent);
 			// 获取排序号，最末节点排序号+30
 			if (StringUtils.isBlank(courseDg.getId())){
 				CourseDg courseDgChild = new CourseDg();
@@ -73,6 +78,8 @@ public class CourseDgController extends BaseController {
 					}
 				}
 			}
+			if(courseDgParent!=null)
+			courseDg.setCourse(courseDgParent.getCourse());
 		}
 		if (courseDg.getSort() == null){
 			courseDg.setSort(30);
@@ -86,6 +93,11 @@ public class CourseDgController extends BaseController {
 	public String save(CourseDg courseDg, Model model, RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, courseDg)){
 			return form(courseDg, model);
+		}
+		CourseVideo video = courseVideoService.get(courseDg.getVideo().getId());
+		if(video!=null){
+    		courseDg.setTeacher(video.getTeacher());
+    		courseDg.setTimelength(video.getLength());
 		}
 		courseDgService.save(courseDg);
 		addMessage(redirectAttributes, "保存课程大纲成功");

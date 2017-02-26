@@ -47,9 +47,9 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">编号：</label>
+			<label class="control-label">所属课程：</label>
 			<div class="controls">
-				<form:input path="code" htmlEscape="false" maxlength="20" class="input-xlarge "/>
+				<tran:course name="course.id" callback="searchVideo()"  value="${courseDg.course.id }" label="${courseDg.course.name }" id="course"></tran:course>
 			</div>
 		</div>
 		<div class="control-group">
@@ -79,7 +79,7 @@
 		<div class="control-group">
 			<label class="control-label">视频：</label>
 			<div class="controls">
-				<form:input path="video.id" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<tran:video name="video.id" courseid="${courseDg.course.id }" value="${courseDg.video.id }" label="${courseDg.video.name }" id="video"></tran:video>
 			</div>
 		</div>
 		<div class="control-group">
@@ -93,5 +93,18 @@
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form:form>
+	<div id="videoBox" class="hide">
+		<form id="importForm" action="${ctx}/sys/user/import" method="post" enctype="multipart/form-data"
+			class="form-search" style="padding-left:20px;text-align:center;" onsubmit="loading('正在导入，请稍等...');"><br/>
+			<input id="uploadFile" name="file" type="file" style="width:330px"/><br/><br/>　　
+			<input id="btnImportSubmit" class="btn btn-primary" type="submit" value="   导    入   "/>
+			<a href="${ctx}/sys/user/import/template">下载模板</a>
+		</form>
+	</div>
+	<script type="text/javascript">
+		function searchVideo(){
+			$("#videoCourseId").val($("#courseId").val());
+		}
+	</script>
 </body>
 </html>

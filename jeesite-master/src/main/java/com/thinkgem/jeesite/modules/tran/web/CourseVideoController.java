@@ -76,5 +76,11 @@ public class CourseVideoController extends BaseController {
 		addMessage(redirectAttributes, "删除视频成功");
 		return "redirect:"+Global.getAdminPath()+"/tran/courseVideo/?repage";
 	}
-
+	@RequiresPermissions("tran:courseVideo:view")
+    @RequestMapping(value = {"tag"})
+    public String tag(CourseVideo courseVideo, HttpServletRequest request, HttpServletResponse response, Model model) {
+        Page<CourseVideo> page = courseVideoService.findPage(new Page<CourseVideo>(request, response), courseVideo); 
+        model.addAttribute("page", page);
+        return "modules/tran/tagCourseVideo";
+    }
 }

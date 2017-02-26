@@ -20,6 +20,7 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.tran.entity.Course;
+import com.thinkgem.jeesite.modules.tran.entity.CourseVideo;
 import com.thinkgem.jeesite.modules.tran.service.CourseService;
 
 /**
@@ -79,4 +80,11 @@ public class CourseController extends BaseController {
 		addMessage(redirectAttributes, "删除课程成功");
 		return "redirect:"+Global.getAdminPath()+"/tran/course/?repage";
 	}
+	@RequiresPermissions("tran:course:view")
+    @RequestMapping(value = {"tag"})
+    public String tag(Course course, HttpServletRequest request, HttpServletResponse response, Model model) {
+        Page<Course> page = courseService.findPage(new Page<Course>(request, response), course); 
+        model.addAttribute("page", page);
+        return "modules/tran/tagCourse";
+    }
 }
