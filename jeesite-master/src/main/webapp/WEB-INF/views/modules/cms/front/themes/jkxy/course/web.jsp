@@ -35,15 +35,15 @@
 				</div>
 			</div>
 			<div class="main">
-
+				<c:set var="typeChilds" value="${fns:getCourseTypes(courseType.id)}"/>
 				<!-- 左容器 -->
 				<div class="nav-left">
 					<div class="nav-block" style="margin-top: 40px;">
 						<ul id="navList">
 							<li>概览</li>
-							<li>成长计划 <span class="nav-little-tit">零基础就业、转行</span></li>
-							<li>专项提高 <span class="nav-little-tit">专项技能提高</span></li>
-							<!-- <li>专项提高 <span class="nav-little-tit">在职技能提升</span></li> -->
+							<c:forEach var="type" items="${typeChilds }">
+							<li>${type.name }<span class="nav-little-tit">${type.remarks }</span></li>
+							</c:forEach>
 							<li>师资介绍</li>
 							<li>常见问题</li>
 						</ul>
@@ -51,18 +51,19 @@
 				</div>
 				<!-- 右容器 -->
 				<div class="main-right" id="mainRight">
-
+					<c:forEach var="type" items="${typeChilds }" >
+					<c:if test="${type.code==1 }">
 					<section class="subject-increase-cont martop-40" id="zxtg"
 						name="zxtg">
 						<!-- 标题 -->
 						<div class="h2-cont cf">
-							<h2>成长计划</h2>
-							<p class="h2-info">零基础就业、转行</p>
+							<h2>${type.name }</h2>
+							<p class="h2-info">${type.remarks }</p>
 						</div>
 						<!-- 内容 -->
 						<!-- 成长计划 -->
 						<ul class="grow-plan-box cf">
-							<c:forEach var="course" items="${congtype1 }">
+							<c:forEach var="course" items="${fns:getCourses(type.id) }">
 							<li><a
 								href="${ctx }/train/course/${course.id}${urlSuffix}"
 								target="_blank"> <img
@@ -88,18 +89,20 @@
 						</ul>
 						<!-- 专项提高 -->
 					</section>
+					</c:if>
+					<c:if test="${type.code==2 }">
 					<section class="subject-increase-cont martop-40" id="zxtg"
 						name="zxtg">
 						<!-- 标题 -->
 						<div class="h2-cont cf">
-							<h2>专项提高</h2>
-							<p class="h2-info">专项技能提高</p>
+							<h2>${type.name }</h2>
+							<p class="h2-info">${type.remarks }</p>
 						</div>
 						<!-- 内容 -->
 						<!-- 成长计划 -->
 						<!-- 专项提高 -->
 						<ul class="increase-box cf">
-							<c:forEach var="course" items="${congtype2 }">
+							<c:forEach var="course" items="${fns:getCourses(type.id) }">
 							<li><a
 								href="${ctx }/train/course/${course.id}${urlSuffix}"
 								target="_blank"> <img
@@ -120,6 +123,8 @@
 							</c:forEach>
 						</ul>
 					</section>
+					</c:if>
+					</c:forEach>
 					<!-- 授课老师 -->
 					<section class="lesson-teacher-cont martop-40">
 						<div class="h2-cont">

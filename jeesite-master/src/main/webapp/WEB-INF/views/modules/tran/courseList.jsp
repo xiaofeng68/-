@@ -48,7 +48,6 @@
 			<tr>
 				<th>课程名称</th>
 				<th>课程类型</th>
-				<th>课程分类</th>
 				<th>主讲老师</th>
 				<th>价格</th>
 				<th>优惠价格</th>
@@ -70,9 +69,6 @@
 				</a></td>
 				<td>
 					${course.courseType.name}
-				</td>
-				<td>
-					${fns:getDictLabel(course.contype, 'CourseType_contype', '')}
 				</td>
 				<td>
 					${course.teacher.name}

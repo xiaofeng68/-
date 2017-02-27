@@ -23,16 +23,15 @@ public class CourseUtils {
 	public static final String CACHE_TRAIN_MAP = "courseMap";
 	
 	@SuppressWarnings("unchecked")
-    public static List<Course> getCourses(String id,String contype){
-	    List<Course> list = (List<Course>) CacheUtils.get(CACHE_TRAIN_MAP+":"+id+":"+contype);
+    public static List<Course> getCourses(String id){
+	    List<Course> list = (List<Course>) CacheUtils.get(CACHE_TRAIN_MAP+":type:"+id);
 	    if(list==null){
     	    Course course = new Course();
     	    CourseType courseType = new CourseType();
     	    courseType.setId(id);
     	    course.setCourseType(courseType);
-    	    course.setContype(contype);
     		list = courseDao.findList(course);
-    		CacheUtils.put(CACHE_TRAIN_MAP+":"+id+":"+contype, list);
+    		CacheUtils.put(CACHE_TRAIN_MAP+":type:"+id, list);
 	    }
 	    return list;
 	}
@@ -66,7 +65,7 @@ public class CourseUtils {
 	public static void clearCache(Course course){
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":teacher:"+course.getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getId());
-	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getCourseType().getId()+":"+course.getContype());
+	    CacheUtils.remove(CACHE_TRAIN_MAP+":type:"+course.getCourseType().getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP);
 	}
 }

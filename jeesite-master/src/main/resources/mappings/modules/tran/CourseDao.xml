@@ -20,13 +20,15 @@
 		a.remarks AS "remarks",
 		a.del_flag AS "delFlag",
 		a.type AS "courseType.id",
-		a.contype AS "contype",
+		a.sort AS "sort",
 		a.img AS "img",
 		u2.name AS "courseType.name",
-		u3.name AS "teacher.name"
+		u3.name AS "teacher.name",
+		u.name AS "createBy.name"
 	</sql>
 	
 	<sql id="courseJoins">
+		JOIN sys_user u ON u.id = a.create_by
 		LEFT JOIN t_course_type u2 ON u2.id = a.type
 		LEFT JOIN t_teacher u3 ON u3.id = a.teacherid
 	</sql>
@@ -64,7 +66,7 @@
 				ORDER BY ${page.orderBy}
 			</when>
 			<otherwise>
-				ORDER BY a.update_date DESC
+				ORDER BY a.id 
 			</otherwise>
 		</choose>
 	</select>
@@ -82,7 +84,7 @@
 				ORDER BY ${page.orderBy}
 			</when>
 			<otherwise>
-				ORDER BY a.update_date DESC
+				ORDER BY a.sort 
 			</otherwise>
 		</choose>
 	</select>
@@ -105,7 +107,7 @@
 			remarks,
 			del_flag,
 			type,
-			contype,
+			sort,
 			img
 		) VALUES (
 			#{name},
@@ -124,7 +126,7 @@
 			#{remarks},
 			#{delFlag},
 			#{courseType.id},
-			#{contype},
+			#{sort},
 			#{img}
 		)
 	</insert>
@@ -144,7 +146,7 @@
 			update_date = #{updateDate},
 			remarks = #{remarks},
 			type = #{courseType.id},
-			contype = #{contype},
+			sort = #{sort},
 			img = #{img}
 		WHERE id = #{id}
 	</update>

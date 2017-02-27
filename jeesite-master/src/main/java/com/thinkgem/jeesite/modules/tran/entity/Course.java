@@ -25,7 +25,7 @@ public class Course extends DataEntity<Course> {
 	private String days;		// 有效期
 	private String students;		// 学习人数
 	private CourseType courseType;// 课程类型
-	private String contype;//课程分类
+	private Integer sort;//排序
 	private String img;//封面
 	
 	public Course() {
@@ -120,20 +120,20 @@ public class Course extends DataEntity<Course> {
         this.teacher = teacher;
     }
 
-    public String getContype() {
-        return contype;
-    }
-
-    public void setContype(String contype) {
-        this.contype = contype;
-    }
-
     public String getImg() {
         return img;
     }
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 	
 }

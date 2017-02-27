@@ -47,15 +47,6 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">课程分类：</label>
-			<div class="controls">
-				<form:select path="contype" class="input-medium">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('CourseType_contype')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
-			</div>
-		</div>
-		<div class="control-group">
 			<label class="control-label">主讲老师：</label>
 			<div class="controls">
 				<form:select path="teacher.id" class="input-xlarge ">
@@ -99,6 +90,12 @@
 			<label class="control-label">时长：</label>
 			<div class="controls">
 				<form:input path="timelength" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">排序：</label>
+			<div class="controls">
+				<form:input path="sort" htmlEscape="false" maxlength="11" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
