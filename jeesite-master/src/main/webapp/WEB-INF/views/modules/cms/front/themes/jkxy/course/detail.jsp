@@ -40,7 +40,13 @@
 					<li>
 						<h1>${course.name }</h1> <i class="icon-tag-yellow">新</i> <!-- <i class="icon-tag-red">周年庆</i> -->
 					</li>
-					<li class="author">主讲 : 写代码的平面师、Jackie、stormzhang等</li>
+					<li class="author">主讲 : 
+					<c:set var="teachers" value="${fns:getTeacherByCourse(course.id) }"/>
+					<c:forEach var="teacher" items="${teachers }" end="2">
+						${teacher.name }&nbsp;
+					</c:forEach>
+					<c:if test="${fn:length(teachers)>3}">等</c:if>
+					</li>
 					<li class="intor">${course.remarks }</li>
 					<li class="price"><span class="curr-price">￥${course.nprice }</span> <span
 						class="old-price">￥${course.price }</span> <span class="vip-price">￥${course.vipprice }</span>
@@ -90,88 +96,71 @@
 							<span class="tag-bg-level">职业入门</span>
 							<!-- 课程完成 -->
 							<div class="catalog">
-								<h2 class="theme">Web前端职业入门</h2>
-								<i class="icon-pull-down toggle"></i> <span class="author">主讲：derek</span>
-								<p class="desc">本课程介绍了Web前端的定义和发展历程，并给大家阐述了Web前端工程师的定位和岗位职责，最后详细阐述如何进行体系化学习和前端专业技能的职业发展路径。</p>
+								<c:forEach var="dg1" items="${fns:getCourseDgs(course.id,1,1)}">
+								<h2 class="theme">${dg1.name }</h2>
+								<i class="icon-pull-down toggle"></i> <span class="author">主讲：${dg1.teacher.name }</span>
+								<p class="desc">${dg1.remarks }</p>
 								<!-- 部分 -->
 								<div class="book">
+									<c:forEach var="dg2" items="${fns:getCourseDgsByParent(dg1.id)}">
 									<h3 class="sub-theme">
-										第 1 部分 Web前端职业入门 <em>30 分钟</em>
+										${dg2.name } <em>${dg2.timelength }分钟</em>
 									</h3>
+									<c:forEach var="dg3" items="${fns:getCourseDgsByParent(dg2.id)}">
 									<!-- 节 -->
 									<!-- 不可学 -->
 									<dl class="play">
 										<dt>
-											第 1 节 Web前端导学 <span>30 分钟</span>
+											${dg3.name }<span>${dg3.timelength } 分钟</span>
 										</dt>
+										<c:forEach var="dg4" items="${fns:getCourseDgsByParent(dg3.id)}">
 										<!-- 课时 -->
 										<dd>
-											Web前端导学 <span class="icon-play"></span>
+											${dg4.name } <span class="icon-play"></span>
 										</dd>
+										</c:forEach>
 									</dl>
+									</c:forEach>
+									</c:forEach>
 									<!-- 作业 -->
 								</div>
+								</c:forEach>
 							</div>
 							<!-- 课程未完成 -->
 							<!-- /课程未完成 -->
 							<span class="tag-bg-level">基础知识</span>
 							<!-- 课程完成 -->
 							<div class="catalog">
-								<h2 class="theme">HTML/HTML5基础</h2>
-								<i class="icon-pull-down toggle"></i> <span class="author">主讲：写代码的平面师</span>
-								<p class="desc">HTML是超文本标记语言，它是网页构成的基础，我们见过的网页基本都离不开HTML代码。本课程从HTML代码的结构写法入手，了解常见的HMTL标签和属性，了解各类HTML标签的用法。HTML作为Web前端开发最基础的技术，非常的重要。本套课程适合零基础学习的学员，是Web前端基础课程。</p>
+								<c:forEach var="dg1" items="${fns:getCourseDgs(course.id,2,1)}">
+								<h2 class="theme">${dg1.name }</h2>
+								<i class="icon-pull-down toggle"></i> <span class="author">主讲：${dg1.teacher.name }</span>
+								<p class="desc">${dg1.remarks }</p>
 								<!-- 部分 -->
 								<div class="book">
+									<c:forEach var="dg2" items="${fns:getCourseDgsByParent(dg1.id)}">
 									<h3 class="sub-theme">
-										第 1 部分 HTML介绍 <em>14 分钟</em>
+										${dg2.name } <em>${dg2.timelength }分钟</em>
 									</h3>
-									<!-- 节 -->
-									<!-- 试学 -->
-									<dl>
-										<dt>
-											第 1 节 HTML介绍 <span>14 分钟</span>
-										</dt>
-										<!-- 课时 -->
-										<dd>
-											<a
-												href="http://xue.jikexueyuan.com/zhiye/course/try?zhiye_class_id=7&goods_id=10&ke_id=13&type=lesson&lesson_id=414"
-												target="_blank"> HTML介绍 <span>试学</span>
-											</a>
-										</dd>
-
-									</dl>
-									<!-- 作业 -->
-
-								</div>
-								<div class="book">
-									<h3 class="sub-theme">
-										第 2 部分 文本标签和属性 <em>46 分钟</em>
-									</h3>
+									<c:forEach var="dg3" items="${fns:getCourseDgsByParent(dg2.id)}">
 									<!-- 节 -->
 									<!-- 不可学 -->
 									<dl class="play">
 										<dt>
-											第 1 节 文本修饰标签的写法及格式 <span>13 分钟</span>
+											${dg3.name }<span>${dg3.timelength } 分钟</span>
 										</dt>
+										<c:forEach var="dg4" items="${fns:getCourseDgsByParent(dg3.id)}">
 										<!-- 课时 -->
 										<dd>
-											文本修饰标签的写法及格式 <span class="icon-play"></span>
+											${dg4.name } <span class="icon-play"></span>
 										</dd>
+										</c:forEach>
 									</dl>
-
-   									<!-- 不可学 -->
-									<dl class="play">
-										<dt>
-											第 2 节 标签的属性和嵌套 <span>14 分钟</span>
-										</dt>
-										<!-- 课时 -->
-										<dd>
-											标签的属性和嵌套 <span class="icon-play"></span>
-										</dd>
-									</dl>
+									</c:forEach>
+									</c:forEach>
+									<!-- 作业 -->
 								</div>
+								</c:forEach>
 							</div>
-
 							<!-- 课程未完成 -->
 							<!-- /课程未完成 -->
 							<div class="serve">
@@ -192,33 +181,20 @@
 				<div class="zyd-aside mar-t20 f_r">
 					<h3 class="caption">主讲老师</h3>
 					<ul class="list">
-
+						<c:forEach var="teacher" items="${teachers }">
 						<li>
 							<div class="teacher cf">
 								<a class="headpic" href="javascript:;"> <img
-									src="other/028crbc8zvgcf.jpeg" alt="">
+									src="${teacher.img }" alt="">
 								</a>
 								<h2 class="tit">
-									<a href="javascript:;">写代码的平面师</a>
+									<a href="javascript:;">${teacher.code }</a>
 								</h2>
-								<span class="desc">极客学院布道师</span>
+								<span class="desc">${teacher.name }</span>
 							</div>
-							<p class="intor">资深Web前端工程师，曾就职于爱立信、联想等知名企业，现任职于某上市互联网公司，担任Web前端项目经理一职，带领12人团队。8年Web前端项目开发经验，具有丰富的HTML5、JavaScript和jQuery开发和教学经验，热爱研究乐于分享。</p>
+							<p class="intor">${teacher.remarks }</p>
 						</li>
-
-						<li>
-							<div class="teacher cf">
-								<a class="headpic" href="javascript:;"> <img
-									src="other/24ocwyjw2ebok.jpeg" alt="">
-								</a>
-								<h2 class="tit">
-									<a href="javascript:;">Jackie</a>
-								</h2>
-								<span class="desc">极客学院布道师</span>
-							</div>
-							<p class="intor">曾为某互联网创业公司技术负责人，在线教育、MOOC理念的拥护者，愿每个人都有实现自己IT梦想的机会！Make
-								a difference。</p>
-						</li>
+						</c:forEach>
 					</ul>
 				</div>
 				<!-- /zyd-aside -->
@@ -241,17 +217,11 @@
 			<script src="${ctxStaticTheme }/js/meiqia_fd9ab62.js"></script>
 		</div>
 
-		
-		<!-- <div class="ad_layer">
-	<div class="baidu_gg" id="baiduAd"></div>
-	<i class="close"></i>
-</div> -->
 		<script src="${ctxStaticTheme }/js/footer.min.js"></script>
 		<script src="${ctxStaticTheme }/js/os.js"></script>
 		<script type="text/javascript">
-	BAIDU_CLB_fillSlotAsync('2478912', 'diaochaid');
-	// BAIDU_CLB_fillSlotAsync('3221920', 'baiduAd');
-</script>
+			BAIDU_CLB_fillSlotAsync('2478912', 'diaochaid');
+		</script>
 		<script type="text/javascript" src="${ctxStaticTheme }/js/dsp.js"></script>
 		<link href="${ctxStaticTheme }/css/register.css" rel="stylesheet"
 			type="text/css">

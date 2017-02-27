@@ -120,5 +120,16 @@
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>
-	
+	<select id="findTeacherByCourse" resultType="Teacher">
+		SELECT 
+			<include refid="teacherColumns"/>
+		FROM t_teacher a ,t_course_dg d,sys_user u 
+		where a.id = d.teacherid and u.id = a.create_by and d.courseid=#{courseId}
+	</select>
+	<select id="getTeacherByCourseType" resultType="Teacher">
+		SELECT 
+			<include refid="teacherColumns"/>
+		FROM t_teacher a ,t_course_dg d,sys_user u ,t_course c
+		where a.id = d.teacherid and u.id = a.create_by and d.courseid=c.id and c.type=#{courseTypeId}
+	</select>
 </mapper>

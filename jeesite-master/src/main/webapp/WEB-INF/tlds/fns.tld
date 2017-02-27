@@ -297,5 +297,33 @@
     <function-signature>java.util.List getTeacher(java.lang.String)</function-signature>
     <example>${fns:getTeacher(id)}</example>  
   </function>
-	  
+  <function>
+    <description>获取老师信息标签</description>
+    <name>getTeacherByCourse</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseUtils</function-class>
+    <function-signature>java.util.List getTeacherByCourse(java.lang.String)</function-signature>
+    <example>${fns:getTeacherByCourse(courseId)}</example>  
+  </function>
+  <function>
+    <description>获取老师信息标签</description>
+    <name>getTeacherByCourseType</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils</function-class>
+    <function-signature>java.util.List getTeacherByCourseType(java.lang.String)</function-signature>
+    <example>${fns:getTeacherByCourseType(courseTypeId)}</example>  
+  </function>
+	<!-- 获取大纲 -->
+  <function>
+    <description>获取大纲标签</description>
+    <name>getCourseDgs</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseDgUtils</function-class>
+    <function-signature>java.util.List getCourseDgs(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getCourseDgs(courseId,type,level)}</example>  
+  </function>
+  <function>
+    <description>获取大纲标签</description>
+    <name>getCourseDgsByParent</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseDgUtils</function-class>
+    <function-signature>java.util.List getCourseDgsByParent(java.lang.String)</function-signature>
+    <example>${fns:getCourseDgsByParent(parentId)}</example>  
+  </function>
 </taglib>

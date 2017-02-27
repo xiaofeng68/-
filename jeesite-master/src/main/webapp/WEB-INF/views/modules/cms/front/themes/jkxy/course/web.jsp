@@ -41,11 +41,8 @@
 					<div class="nav-block" style="margin-top: 40px;">
 						<ul id="navList">
 							<li>概览</li>
-
 							<li>成长计划 <span class="nav-little-tit">零基础就业、转行</span></li>
-
 							<li>专项提高 <span class="nav-little-tit">专项技能提高</span></li>
-
 							<!-- <li>专项提高 <span class="nav-little-tit">在职技能提升</span></li> -->
 							<li>师资介绍</li>
 							<li>常见问题</li>
@@ -136,15 +133,16 @@
 								<span id="banner-left" class="arrow-left"></span> <span
 									id="banner-right" class="arrow-right"></span>
 								<div class="swiper-wrapper">
-
+									<c:forEach var="teacher" items="${fns:getTeacherByCourseType(cousrseType.id) }">
 									<div class="swipper-card swiper-slide">
-										<img src="other/028crbc8zvgcf.jpeg" alt="写代码的平面师" id="2990265"
+										<img src="${teacher.img }" alt="${teacher.name }" id="${teacher.id }"
 											class="teach-img">
 										<div class="swipper-card-intro">
-											<p class="teach-name">写代码的平面师</p>
-											<p class="teach-info">资深Web前端工程师和布道师，先后就职于爱立信、联想等知名企业。</p>
+											<p class="teach-name">${teacher.name }</p>
+											<p class="teach-info">${teacher.remarks }</p>
 										</div>
 									</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>

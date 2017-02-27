@@ -59,6 +59,12 @@
 			<if test="contype != null and contype != ''">
 				AND a.contype = #{contype}
 			</if>
+			<if test="course != null and course.id != null and course.id != ''">
+				AND a.courseid = #{course.id}
+			</if>
+			<if test="level != null and level != ''">
+				AND a.level = #{level}
+			</if>
 			<if test="parent != null and parent.id != null and parent.id != ''">
 				AND a.parent_id = #{parent.id}
 			</if>

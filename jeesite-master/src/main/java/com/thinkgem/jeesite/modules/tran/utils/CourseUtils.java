@@ -5,8 +5,10 @@ import java.util.List;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 import com.thinkgem.jeesite.modules.tran.dao.CourseDao;
+import com.thinkgem.jeesite.modules.tran.dao.TeacherDao;
 import com.thinkgem.jeesite.modules.tran.entity.Course;
 import com.thinkgem.jeesite.modules.tran.entity.CourseType;
+import com.thinkgem.jeesite.modules.tran.entity.Teacher;
 
 /**
  * 课程获取工具类
@@ -16,6 +18,7 @@ import com.thinkgem.jeesite.modules.tran.entity.CourseType;
 public class CourseUtils {
 	
 	private static CourseDao courseDao = SpringContextHolder.getBean(CourseDao.class);
+	private static TeacherDao teacherDao = SpringContextHolder.getBean(TeacherDao.class);
 
 	public static final String CACHE_TRAIN_MAP = "courseMap";
 	
@@ -51,7 +54,17 @@ public class CourseUtils {
 	    }
 	    return course;
 	}
+	@SuppressWarnings("unchecked")
+    public static List<Teacher> getTeacherByCourse(String id){
+        List<Teacher> list = (List<Teacher>)CacheUtils.get(CACHE_TRAIN_MAP+":teacher:"+id);
+        if(list==null){
+            list = teacherDao.findTeacherByCourse(id);
+            CacheUtils.put(CACHE_TRAIN_MAP+":teacher:"+id, list);
+        }
+        return list;
+    }
 	public static void clearCache(Course course){
+	    CacheUtils.remove(CACHE_TRAIN_MAP+":teacher:"+course.getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+course.getCourseType().getId()+":"+course.getContype());
 	    CacheUtils.remove(CACHE_TRAIN_MAP);

@@ -14,6 +14,7 @@ import com.thinkgem.jeesite.modules.tran.entity.Course;
 import com.thinkgem.jeesite.modules.tran.entity.CourseType;
 import com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils;
 import com.thinkgem.jeesite.modules.tran.utils.CourseUtils;
+import com.thinkgem.jeesite.modules.tran.utils.TeacherUtils;
 
 
  /**

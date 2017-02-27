@@ -23,16 +23,16 @@ public class TeacherUtils {
     }
     @SuppressWarnings("unchecked")
     public static List<Teacher> getTeacherList(String type){
-        List<Teacher> list = (List<Teacher>) CacheUtils.get(CACHE_TRAIN_MAP+":code:"+type);
+        List<Teacher> list = (List<Teacher>) CacheUtils.get(CACHE_TRAIN_MAP+":type:"+type);
         if(list==null){
             Teacher teacher = new Teacher();
             list = teacherDao.findList(teacher);
-            CacheUtils.put(CACHE_TRAIN_MAP+":code:"+type, list);
+            CacheUtils.put(CACHE_TRAIN_MAP+":type:"+type, list);
         }
         return list;
     }
     public static void clearCache(Teacher teacher){
         CacheUtils.remove(CACHE_TRAIN_MAP+":"+teacher.getId());
-        CacheUtils.remove(CACHE_TRAIN_MAP+":code:");
+        CacheUtils.remove(CACHE_TRAIN_MAP+":type:");
     }
 }

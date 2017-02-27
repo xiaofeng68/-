@@ -3,6 +3,8 @@
  */
 package com.thinkgem.jeesite.modules.tran.dao;
 
+import java.util.List;
+
 import com.thinkgem.jeesite.common.persistence.CrudDao;
 import com.thinkgem.jeesite.common.persistence.annotation.MyBatisDao;
 import com.thinkgem.jeesite.modules.tran.entity.Teacher;
@@ -14,5 +16,13 @@ import com.thinkgem.jeesite.modules.tran.entity.Teacher;
  */
 @MyBatisDao
 public interface TeacherDao extends CrudDao<Teacher> {
-	
+	/**   
+	 * @Title: findTeacherByCourse   
+	 * @Description: 获取课程关联的讲师
+	 * @param courseId
+	 * @return
+	 * @author  author
+	 */
+	 
+	List<Teacher> findTeacherByCourse(String courseId);
 }
