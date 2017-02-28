@@ -106,7 +106,9 @@
 			update_date,
 			remarks,
 			del_flag,
+			<if test="courseType!=null and courseType.id!=null and courseType.id!=''">
 			type,
+			</if>
 			sort,
 			img
 		) VALUES (
@@ -125,7 +127,9 @@
 			#{updateDate},
 			#{remarks},
 			#{delFlag},
+			<if test="courseType!=null and courseType.id!=null and courseType.id!=''">
 			#{courseType.id},
+			</if>
 			#{sort},
 			#{img}
 		)
@@ -145,7 +149,9 @@
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
 			remarks = #{remarks},
+			<if test="courseType!=null and courseType.id!=null and courseType.id!=''">
 			type = #{courseType.id},
+			</if>
 			sort = #{sort},
 			img = #{img}
 		WHERE id = #{id}

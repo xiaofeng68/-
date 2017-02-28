@@ -50,7 +50,7 @@
 		<div class="control-group">
 			<label class="control-label">课程类型编号：</label>
 			<div class="controls">
-				<form:input path="code" htmlEscape="false" maxlength="50" class="input-xlarge required"/>
+				<form:input path="code" htmlEscape="false" maxlength="50" class="input-xlarge"/>
 			</div>
 		</div>
 		<div class="control-group">

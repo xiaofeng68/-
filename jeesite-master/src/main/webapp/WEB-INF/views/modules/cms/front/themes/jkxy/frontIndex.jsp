@@ -51,47 +51,17 @@
 		</div>
 		<section class="jk-sku">
 			<ul>
-
-				<li><a href="/zhiye/course/34.html?type=8" target="_blank">
-						<img src="${ctxStaticTheme }/images/2a7bf0a0-d94d-40d4-a244-20e5a5e359e6.jpg">
+			<c:forEach var="course" items="${fns:getCourses(0) }" end="3">
+				<li><a href="${ctx }/train/course/${course.id}${urlSuffix}" target="_blank">
+						<img src="${course.img }">
 						<div class="skuContainer">
-							<p class="skuTitle">『微信小程序』从基础到实战</p>
-							<p class="skuInfo">14小时&nbsp;&nbsp;|&nbsp;&nbsp;1门课</p>
-							<span class="skuPrice">449.00</span> <span class="skuThrought">¥499.00</span>
-							<span class="skuNum">1914人学习</span>
+							<p class="skuTitle">${course.name }</p>
+							<p class="skuInfo">${course.timelength/60 }小时&nbsp;&nbsp;|&nbsp;&nbsp;1门课</p>
+							<span class="skuPrice">${course.nprice }</span> <span class="skuThrought">¥${course.price }</span>
+							<span class="skuNum">${course.students }人学习</span>
 						</div>
 				</a></li>
-
-				<li><a href="/zhiye/course/37.html?type=4" target="_blank">
-						<img src="${ctxStaticTheme }/images/7a70c982-28a4-4340-8044-b3434df19713.jpg">
-						<div class="skuContainer">
-							<p class="skuTitle">Python利器，超凡蜘蛛带你“爬”世界</p>
-							<p class="skuInfo">37小时&nbsp;&nbsp;|&nbsp;&nbsp;1门课</p>
-							<span class="skuPrice">349.00</span> <span class="skuThrought">¥499.00</span>
-							<span class="skuNum">98人学习</span>
-						</div>
-				</a></li>
-
-				<li><a href="/zhiye/course/24.html?type=10" target="_blank">
-						<img src="${ctxStaticTheme }/images/0fc0e89e-e83c-4a6e-8229-ff8c57ea5d9e.jpg">
-						<div class="skuContainer">
-							<p class="skuTitle">0基础学iOS——Swift基础</p>
-							<p class="skuInfo">16小时&nbsp;&nbsp;|&nbsp;&nbsp;1门课</p>
-							<span class="skuPrice">99.00</span> <span class="skuThrought">¥159.00</span>
-							<span class="skuNum">79人学习</span>
-						</div>
-				</a></li>
-
-				<li><a href="/zhiye/course/39.html?type=8" target="_blank">
-						<img src="${ctxStaticTheme }/images/4a1029ca-89bc-472c-8bd1-68f97034c5fd.jpg">
-						<div class="skuContainer">
-							<p class="skuTitle">7小时玩转网页布局开发</p>
-							<p class="skuInfo">8小时&nbsp;&nbsp;|&nbsp;&nbsp;1门课</p>
-							<span class="skuPrice">59.00</span> <span class="skuThrought">¥129.00</span>
-							<span class="skuNum">12人学习</span>
-						</div>
-				</a></li>
-
+			</c:forEach>
 			</ul>
 		</section>
 		<section class="jk-college">
