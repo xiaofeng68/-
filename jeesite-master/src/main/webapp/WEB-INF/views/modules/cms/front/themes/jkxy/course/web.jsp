@@ -28,7 +28,7 @@
 		<div id="pager">
 			<!-- banner 图 -->
 			<div class="banner"
-				style="background-image: url('https://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-173aaa98-1e48-48f1-877f-5b563fefd5e9.jpg');">
+				style="background-image: url('${courseType.img}');">
 				<div class="banbox">
 					<h1>${courseType.name }</h1>
 					<div class="banner-info">${courseType.remarks }</div>

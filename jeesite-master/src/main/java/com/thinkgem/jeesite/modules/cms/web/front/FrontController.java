@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.collect.Lists;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
+import com.thinkgem.jeesite.common.security.WpEncrypt;
 import com.thinkgem.jeesite.common.servlet.ValidateCodeServlet;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
@@ -34,6 +35,8 @@ import com.thinkgem.jeesite.modules.cms.service.LinkService;
 import com.thinkgem.jeesite.modules.cms.service.SiteService;
 import com.thinkgem.jeesite.modules.cms.utils.CmsUtils;
 import com.thinkgem.jeesite.modules.sys.utils.SettingUtils;
+import com.thinkgem.jeesite.modules.tran.entity.Student;
+import com.thinkgem.jeesite.modules.tran.service.StudentService;
 
 /**
  * 网站Controller
@@ -56,6 +59,8 @@ public class FrontController extends BaseController{
 	private CategoryService categoryService;
 	@Autowired
 	private SiteService siteService;
+	@Autowired
+    private StudentService studentService;
 	
 	/**
 	 * 网站首页
@@ -343,5 +348,62 @@ public class FrontController extends BaseController{
             return article.getCustomContentView();
         }
     }
-	
+    @RequestMapping(value = "register${urlSuffix}",method=RequestMethod.GET)
+    public String register(Model model) {
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        return "modules/cms/front/themes/"+site.getTheme()+"/frontRegister";
+    }
+    @RequestMapping(value = "loginPage${urlSuffix}",method=RequestMethod.GET)
+    public String loginPage(Model model) {
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        return "modules/cms/front/themes/"+site.getTheme()+"/frontLogin";
+    }
+    @RequestMapping(value = "check${type}${urlSuffix}",method=RequestMethod.GET)
+    @ResponseBody
+    public boolean loginPage(@PathVariable String type,String value,HttpServletRequest request, HttpServletResponse response, Model model){
+        String key = type.trim().toLowerCase();
+        if("phone".equals(key)){
+            int  count = studentService.hasPhone(value);
+            if(count==0) return false;
+        }else if("code".equals(key)){
+            
+        }
+        return true;
+    }
+    @RequestMapping(value = "register",method=RequestMethod.POST)
+    public String register(Student student,HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        if(studentService.hasPhone(student.getPhone())==0){
+            model.addAttribute("msg","注册成功，请登录！");
+            student.setPassword(WpEncrypt.desEncrypt(student.getPassword()));
+            studentService.save(student);
+            return "modules/cms/front/themes/"+site.getTheme()+"/frontLogin";
+        }else{
+            model.addAttribute("type","remote");
+            return "modules/cms/front/themes/"+site.getTheme()+"/frontRegister";
+        }
+    }
+    @RequestMapping(value = "login",method=RequestMethod.POST)
+    public String login(Student student,HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        Student stu = studentService.getPhone(student.getPhone());
+        if(stu!=null && student.getPassword().equals(WpEncrypt.desDecrypt(stu.getPassword()))){
+            request.getSession().setAttribute("currentStudent", stu);
+            return "modules/cms/front/themes/"+site.getTheme()+"/frontIndex";
+        }else{
+            model.addAttribute("errorMsg","手机号还未注册，请先注册！");
+            return "modules/cms/front/themes/"+site.getTheme()+"/frontLogin";
+        }
+    }
+    @RequestMapping(value = "loginOut",method=RequestMethod.GET)
+    public String loginOut(HttpServletRequest request, HttpServletResponse response, Model model){
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        request.getSession().removeAttribute("currentStudent");
+        return "modules/cms/front/themes/"+site.getTheme()+"/frontIndex";
+    }
 }

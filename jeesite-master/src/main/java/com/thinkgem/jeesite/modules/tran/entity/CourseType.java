@@ -23,6 +23,7 @@ public class CourseType extends TreeEntity<CourseType> {
 	private Integer sort;		// 排序
 	private String code;//编号
 	private String questions;//常见问题
+	private String img;//课程背景
 	
 	public CourseType() {
 		super();
@@ -87,5 +88,13 @@ public class CourseType extends TreeEntity<CourseType> {
 
     public void setQuestions(String questions) {
         this.questions = questions;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

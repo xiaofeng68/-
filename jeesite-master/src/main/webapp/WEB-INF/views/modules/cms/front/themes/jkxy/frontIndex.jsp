@@ -31,12 +31,29 @@
 				<div class="userInfo">
 					<a href="http://my.jikexueyuan.com/setting/user"> <img
 						src="${ctxStaticTheme }/images/headpic_8ce0f6d.jpg" class="userImg">
-					</a> <span class="userName">Hello,</span>
+					</a> 
+					<span class="userName">
+					<c:choose>
+						<c:when test="${not empty currentStudent }">
+							${currentStudent.phone }
+						</c:when>
+						<c:otherwise>
+							hello
+						</c:otherwise>
+					</c:choose>
+					</span>
 					<p class="userStatus">欢迎成为极客一员</p>
 				</div>
-				<a href="#" class="loginOn diaLoginBtn">登录</a> <a
-					href="http://passport.jikexueyuan.com/sso/reg_phone"
-					class="registerNow">免费注册</a>
+				<c:choose>
+					<c:when test="${not empty currentStudent }">
+						<a href="${ctx }/loginOut${urlSuffix}" class="loginOn diaLoginBtn">退出</a> 
+					</c:when>
+					<c:otherwise>
+						<a href="${ctx }/loginPage${urlSuffix}" class="loginOn diaLoginBtn">登录</a> 
+						<a href="${ctx }/register${urlSuffix}" class="registerNow">免费注册</a>
+					</c:otherwise>
+				</c:choose>
+				
 
 			</section>
 			<section class="jk-huodong" id="banner02-1"></section>

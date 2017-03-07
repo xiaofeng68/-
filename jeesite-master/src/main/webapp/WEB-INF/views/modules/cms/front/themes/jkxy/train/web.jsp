@@ -4,7 +4,6 @@
 <html>
 <head>
 <TITLE>web大前端 - 极客学院</TITLE>
-<meta name="decorator" content="cms_default_${site.theme}" />
 <meta name="description" content="JeeSite ${site.description}" />
 <meta name="keywords" content="JeeSite ${site.keywords}" />
 <link rel="stylesheet" href="${ctxStaticTheme }/css/swiper.css">
@@ -33,7 +32,7 @@
 
 			<UL class="wrap cf">
 
-				<LI class=logo-part><IMG class=logo src="images/logo.png">
+				<LI class=logo-part><IMG class=logo height="40px" src="${site.logo }">
 
 					<P class=slogan1>实战成就高薪就业</P>
 				<LI class=nav-part><A class=kcsz href="javascript:;">课程设置</A> <A
@@ -134,7 +133,7 @@
 			<H2 class=part-tit>为什么Web大前端工程师如此值钱？</H2>
 
 			<P class=part-tip>技术从业者，一线大公司，互联网行业，都在追捧的明星！</P>
-			<IMG src="images/part2-1.jpg"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part2-1.jpg"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">咨询如何成为Web大前端工程师</A>
 		</DIV>
@@ -146,7 +145,7 @@
 			<H2 class=part-tit>Web大前端，想说爱你不容易！</H2>
 
 			<P class=part-tip>看着眼红，学着痛苦？！何时才能进公司？</P>
-			<IMG src="images/part3-1.png">
+			<IMG src="${ctxStaticTheme }/images/part3-1.png">
 			<SECTION class=secondary>
 
 				<H3>极客学院Web大前端工程师就业班</H3>
@@ -167,7 +166,7 @@
 		<DIV class=wrap>
 
 			<H2 class=part-tit>急你所急，满足6大不同类型人群诉求</H2>
-			<IMG src="images/part4-1.png"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part4-1.png"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">咨询我适合学前端吗？</A>
 		</DIV>
@@ -229,7 +228,7 @@
 
 			<UL class=cf>
 
-				<LI><IMG src="images/part7-1-1.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part7-1-1.jpg">
 
 					<H4>张杰</H4>
 
@@ -238,7 +237,7 @@
 					<P>12年行业工作经验，6年教学经验，讲课风趣，形式多样</P>
 
 					<P>项目经验丰富，曾参与过各大中小型项目开发；电商、门户、财务、教育等网站类型均有涉及</P>
-				<LI><IMG src="images/part7-2.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part7-2.jpg">
 
 					<H4>王剑</H4>
 
@@ -249,7 +248,7 @@
 					<P>华为广东移动BOSS系统建设期间担任Team Leader</P>
 
 					<P>擅长引导学员思考分析</P>
-				<LI><IMG src="images/part7-3.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part7-3.jpg">
 
 					<H4>翟宝明</H4>
 
@@ -260,7 +259,7 @@
 					<P>在HTML5和Node.js方面有丰富的项目经验。</P>
 
 					<P>已成功辅导218位学员从技术小白成功转行Web前端工程师</P>
-				<LI><IMG src="images/part7-4.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part7-4.jpg">
 
 					<H4>谢家全</H4>
 
@@ -271,7 +270,7 @@
 					<P>曾负责大数据平台可视化项目的中前端开发，PHP整站和手机客户端Android开发</P>
 
 					<P>愿意将自己多年的经验，分享给更多职场新人</P>
-				<LI><IMG src="images/part7-5.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part7-5.jpg">
 
 					<H4>耿昌宇</H4>
 
@@ -301,14 +300,14 @@
 			<P class=part-tip>随堂作业 通关任务 技术难点 实用技巧</P>
 
 			<DIV class=video>
-				<VIDEO id=videoA poster="images/video_bg1.jpg"
+				<VIDEO id=videoA poster="${ctxStaticTheme }/images/video_bg1.jpg"
 					mediagroup="myVideoGroup" preload="autoplay" controls="controls">
 					<SOURCE id=mp4 type="video/mp4"
 						src="http://jiuye-res.jikexueyuan.com/web/video/66fefbc0-b1e2-42e3-83fb-09f5cccdada6.mp4">
 
 					<P>Your user agent does not support the HTML5 Video element.</P>
 				</VIDEO>
-				<IMG id=playA alt="" src="images/video_bg1.jpg">
+				<IMG id=playA alt="" src="${ctxStaticTheme }/images/video_bg1.jpg">
 			</DIV>
 			<A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
@@ -380,7 +379,7 @@
 				海量资源，如虎添翼！81.7%的人需要2年才填完的坑，<SPAN class=red>你在极客学院web
 					大前端就业班只要4个月！</SPAN>
 			</P>
-			<IMG src="images/part10-1.jpg"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part10-1.jpg"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">了解更多Wiki资源</A>
 		</DIV>
@@ -394,7 +393,7 @@
 			<P class="part-tip white">
 				PLPS 是极客学院结合在线教育特点及兴趣学习模型开发的<SPAN class=red>项目驱动制冲关式学习保障系统。 </SPAN><BR>6项强大功能，针对性解决学习过程中的过度放任、半途而废、效果不好、周期过长等问题。
 			</P>
-			<IMG src="images/part11-1.png"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part11-1.png"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">向老师申请试学</A>
 		</DIV>
@@ -406,7 +405,7 @@
 			<H2 class=part-tit>4个月，160次1对1作业批改机会</H2>
 
 			<P class=part-tip>—— 每1位学生可以接受来自10名以上实战教练的直接指点 ——</P>
-			<IMG src="images/part12-1.jpg"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part12-1.jpg"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">咨询老师更多学习问题</A>
 		</DIV>
@@ -423,7 +422,7 @@
 
 				<LI id=loyoBtn><A
 					onclick="doyoo.util.openChat('g=10059996');return false;"
-					href="javascript:;"><IMG id=loyoImg src="images/part13-1.jpg"></A>
+					href="javascript:;"><IMG id=loyoImg src="${ctxStaticTheme }/images/part13-1.jpg"></A>
 					<A class="zxbtn loyo-btn"
 					onclick="doyoo.util.openChat('g=10059996');return false;"
 					href="javascript:;">咨询老师如何学会</A> </A>
@@ -483,7 +482,7 @@
 		<DIV class=wrap>
 
 			<H2 class="part-tit white">比一比，孰好孰坏高下立见！</H2>
-			<IMG src="images/part15-1.jpg"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part15-1.jpg"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">咨询极客学院教学特色</A>
 		</DIV>
@@ -498,18 +497,18 @@
 			<UL class=path-cont>
 				<I class=path-light></I>
 
-				<LI class="top top1 icons"><IMG src="images/part16-1.png">
-				<LI class="top top2 icons"><IMG src="images/part16-2.png">
-				<LI class="top top3 icons"><IMG src="images/part16-3.png">
-				<LI class="top top4 icons"><IMG src="images/part16-4.png">
-				<LI class="mid mid1 icons"><IMG src="images/part16-5.png">
-				<LI class="mid mid2 icons"><IMG src="images/part16-6.png">
-				<LI class="mid mid3 icons"><IMG src="images/part16-7.png">
-				<LI class="mid mid4 icons"><IMG src="images/part16-8.png">
-				<LI class="bot icons"><IMG src="images/part16-9.png">
-				<LI class="big icons"><IMG src="images/part16-10.png"> <I
+				<LI class="top top1 icons"><IMG src="${ctxStaticTheme }/images/part16-1.png">
+				<LI class="top top2 icons"><IMG src="${ctxStaticTheme }/images/part16-2.png">
+				<LI class="top top3 icons"><IMG src="${ctxStaticTheme }/images/part16-3.png">
+				<LI class="top top4 icons"><IMG src="${ctxStaticTheme }/images/part16-4.png">
+				<LI class="mid mid1 icons"><IMG src="${ctxStaticTheme }/images/part16-5.png">
+				<LI class="mid mid2 icons"><IMG src="${ctxStaticTheme }/images/part16-6.png">
+				<LI class="mid mid3 icons"><IMG src="${ctxStaticTheme }/images/part16-7.png">
+				<LI class="mid mid4 icons"><IMG src="${ctxStaticTheme }/images/part16-8.png">
+				<LI class="bot icons"><IMG src="${ctxStaticTheme }/images/part16-9.png">
+				<LI class="big icons"><IMG src="${ctxStaticTheme }/images/part16-10.png"> <I
 					class=offer-radius></I>
-				<LI class="txt icons"><IMG src="images/part16-11.png"></LI>
+				<LI class="txt icons"><IMG src="${ctxStaticTheme }/images/part16-11.png"></LI>
 			</UL>
 
 			<P class=job-hc>
@@ -606,7 +605,7 @@
 		<DIV class=wrap>
 
 			<H2 class="part-tit white">三重就业保障，确保高薪就业</H2>
-			<IMG src="images/part19-1.png"> <A class=zxbtn
+			<IMG src="${ctxStaticTheme }/images/part19-1.png"> <A class=zxbtn
 				onclick="doyoo.util.openChat('g=10059996');return false;"
 				href="javascript:;">咨询老师就业保障</A>
 		</DIV>
@@ -642,19 +641,19 @@
 				<DIV class=swiper-wrapper>
 
 					<DIV class=swiper-slide>
-						<IMG alt="" src="images/swiper_1.png">
+						<IMG alt="" src="${ctxStaticTheme }/images/swiper_1.png">
 					</DIV>
 
 					<DIV class=swiper-slide>
-						<IMG alt="" src="images/swiper_2.png">
+						<IMG alt="" src="${ctxStaticTheme }/images/swiper_2.png">
 					</DIV>
 
 					<DIV class=swiper-slide>
-						<IMG alt="" src="images/swiper_3.png">
+						<IMG alt="" src="${ctxStaticTheme }/images/swiper_3.png">
 					</DIV>
 
 					<DIV class=swiper-slide>
-						<IMG alt="" src="images/swiper_4.png">
+						<IMG alt="" src="${ctxStaticTheme }/images/swiper_4.png">
 					</DIV>
 				</DIV>
 			</DIV>
@@ -673,16 +672,16 @@
 
 			<UL class=cf>
 
-				<LI><IMG src="images/part21_1_1.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part21_1_1.jpg">
 
 					<P>2014年度最具竞争力IT教育品牌</P>
-				<LI><IMG src="images/part21_1_2.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part21_1_2.jpg">
 
 					<P>2014年度最具创新力在线教育品牌</P>
-				<LI><IMG src="images/part21_1_3.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part21_1_3.jpg">
 
 					<P>2015年度竞争力在线教育品牌</P>
-				<LI><IMG src="images/part21_1_4.jpg">
+				<LI><IMG src="${ctxStaticTheme }/images/part21_1_4.jpg">
 
 					<P>2015年度知名职业教育品牌</P></LI>
 			</UL>
@@ -690,15 +689,15 @@
 			<DL class=cf>
 
 				<DD>
-					<IMG src="images/part21_2_1.jpg">
+					<IMG src="${ctxStaticTheme }/images/part21_2_1.jpg">
 
 					<P>中国互联网年度最佳产品经理雇主</P>
 				<DD>
-					<IMG src="images/part21_2_2.jpg">
+					<IMG src="${ctxStaticTheme }/images/part21_2_2.jpg">
 
 					<P>2014数字商业创新先锋奖</P>
 				<DD>
-					<IMG src="images/part21_2_3.jpg">
+					<IMG src="${ctxStaticTheme }/images/part21_2_3.jpg">
 
 					<P>2015年度教育类产品及服务奖</P>
 				</DD>
@@ -710,7 +709,7 @@
 		<DIV class=wrap>
 
 			<H2 class=part-tit>媒体报道</H2>
-			<IMG src="images/part22-1.jpg">
+			<IMG src="${ctxStaticTheme }/images/part22-1.jpg">
 		</DIV>
 	</SECTION>
 	<SECTION id=part23>
@@ -792,7 +791,7 @@
 			<DL>
 
 				<DT>
-					<IMG alt="" src="images/logo_jkxy.png">
+					<IMG alt="" src="${ctxStaticTheme }/images/logo_jkxy.png">
 				<DD>联系电话：400-678-8266
 				<DD>公司地址：北京市海淀区上地三街9号金隅嘉华大厦C座1008</DD>
 			</DL>
@@ -812,30 +811,30 @@
         </div>
 
     </div> -->
-	<LINK rel=stylesheet type=text/css href="css/register.css">
+	<LINK rel=stylesheet type=text/css href="${ctxStaticTheme }/css/register.css">
 
 
-	<SCRIPT type=text/javascript src="js/vds.js" async="true"></SCRIPT>
-
-
-
-	<SCRIPT type=text/javascript src="js/jquery-2.2.4.min.js"></SCRIPT>
+	<SCRIPT type=text/javascript src="${ctxStaticTheme }/js/vds.js" async="true"></SCRIPT>
 
 
 
-	<SCRIPT type=text/javascript src="js/jquery.animateNumber.min.js"></SCRIPT>
+	<SCRIPT type=text/javascript src="${ctxStaticTheme }/js/jquery-2.2.4.min.js"></SCRIPT>
 
 
 
-	<SCRIPT type=text/javascript src="js/idangerous.swiper.min.js"></SCRIPT>
+	<SCRIPT type=text/javascript src="${ctxStaticTheme }/js/jquery.animateNumber.min.js"></SCRIPT>
 
 
 
-	<SCRIPT type=text/javascript src="js/growingio.js"></SCRIPT>
+	<SCRIPT type=text/javascript src="${ctxStaticTheme }/js/idangerous.swiper.min.js"></SCRIPT>
 
 
 
-	<SCRIPT type=text/javascript charset=utf-8 src="js/10066807.js"></SCRIPT>
+	<SCRIPT type=text/javascript src="${ctxStaticTheme }/js/growingio.js"></SCRIPT>
+
+
+
+	<SCRIPT type=text/javascript charset=utf-8 src="${ctxStaticTheme }/js/10066807.js"></SCRIPT>
 
 
 

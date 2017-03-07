@@ -61,6 +61,13 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label">课程背景：</label>
+			<div class="controls">
+				<input type="hidden" id="img" name="img" value="${course.img}" />
+				<sys:ckfinder input="img" type="images" uploadPath="/tran/coursetype" selectMultiple="false"/>
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label">备注信息：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>

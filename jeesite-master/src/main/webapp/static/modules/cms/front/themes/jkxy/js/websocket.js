@@ -301,6 +301,7 @@ jkWebSocket = {
 	}
 
 }
+/*
 $(function() {
 	var uid = $.cookie("uid");
 	if (uid) {
@@ -309,3 +310,4 @@ $(function() {
 		//console.log("未登录")
 	}
 })
+*/

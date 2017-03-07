@@ -16,6 +16,7 @@
 		a.del_flag AS "delFlag",
 		a.code AS "code",
 		a.questions AS "questions",
+		a.img AS "img",
 		u.name AS "createBy.name"
 	</sql>
 	
@@ -95,7 +96,8 @@
 			remarks,
 			del_flag,
 			code,
-			questions
+			questions,
+			img
 		) VALUES (
 			#{parent.id},
 			#{name},
@@ -108,7 +110,8 @@
 			#{remarks},
 			#{delFlag},
 			#{code},
-			#{questions}
+			#{questions},
+			#{img}
 		)
 	</insert>
 	
@@ -120,7 +123,8 @@
 			sort = #{sort},
 			remarks = #{remarks},
 			code = #{code},
-			questions = #{questions}
+			questions = #{questions},
+			img = #{img}
 		WHERE id = #{id}
 	</update>
 	
