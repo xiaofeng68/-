@@ -21,6 +21,7 @@ public class CourseVideo extends DataEntity<CourseVideo> {
 	private Course course;		// 课程
 	private Teacher teacher;		// 主讲
 	private String type;		// 视频分类
+	private Integer sorts;
 	
 	public CourseVideo() {
 		super();
@@ -89,5 +90,13 @@ public class CourseVideo extends DataEntity<CourseVideo> {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+    public Integer getSorts() {
+        return sorts;
+    }
+
+    public void setSorts(Integer sorts) {
+        this.sorts = sorts;
+    }
 	
 }

@@ -17,6 +17,7 @@
 		a.remarks AS "remarks",
 		a.del_flag AS "delFlag",
 		a.type AS "type",
+		a.sorts as "sorts",
 		u3.name AS "teacher.name",
 		u2.name AS "course.name",
 		u.name AS "createBy.name"
@@ -64,7 +65,7 @@
 				ORDER BY ${page.orderBy}
 			</when>
 			<otherwise>
-				ORDER BY a.update_date DESC
+				ORDER BY a.sorts DESC
 			</otherwise>
 		</choose>
 	</select>
@@ -101,7 +102,8 @@
 			update_date,
 			remarks,
 			del_flag,
-			type
+			type,
+			sorts
 		) VALUES (
 			#{name},
 			#{length},
@@ -115,7 +117,8 @@
 			#{updateDate},
 			#{remarks},
 			#{delFlag},
-			#{type}
+			#{type},
+			#{sorts}
 		)
 	</insert>
 	
@@ -130,7 +133,8 @@
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
 			remarks = #{remarks},
-			type = #{type}
+			type = #{type},
+			sorts = #{sorts}
 		WHERE id = #{id}
 	</update>
 	

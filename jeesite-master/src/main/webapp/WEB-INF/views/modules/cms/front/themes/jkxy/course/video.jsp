@@ -109,8 +109,8 @@ function changeVideo(src){
 							<li class="on diaLoginBtn"><i class="lessonmbers"><em>${num.index+1 }</em></i>
 								<div class="text-box">
 									<h2>
-										<a href="javascript:void(0);" class="diaLoginBtn" onclick="changeVideo('${pageContext.request.contextPath}/userfiles/1/video/tran/video/${video.id }.mp4')">${video.name }</a>
-										<p class="f_r">${vieo.length }</p>
+										<a href="javascript:void(0);" class="diaLoginBtn" onclick="changeVideo('${video.url}')">${video.name }</a>
+										<p class="f_r">${video.length }</p>
 									</h2>
 									<p>${discontent }</p>
 								</div>
