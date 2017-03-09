@@ -333,4 +333,12 @@
     <function-signature>java.util.List getCourseDgsByParent(java.lang.String)</function-signature>
     <example>${fns:getCourseDgsByParent(parentId)}</example>  
   </function>
+  <!-- 获取视频列表 -->
+  <function>
+    <description>获取视频标签</description>
+    <name>getCourseVideos</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseVideoUtils</function-class>
+    <function-signature>java.util.List getCourseVideos(java.lang.String)</function-signature>
+    <example>${fns:getCourseVideos(courseid)}</example>  
+  </function>
 </taglib>

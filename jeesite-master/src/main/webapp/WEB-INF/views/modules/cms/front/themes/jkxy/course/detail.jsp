@@ -53,10 +53,9 @@
 					</li>
 					<li class="cf last">
 						<!-- 免费试学、立即报名、去学习 --> 
-						<a class="greenbtn" href="http://xue.jikexueyuan.com/zhiye/course/try?zhiye_class_id=7&goods_id=10&ke_id=13&amp;type=lesson&amp;lesson_id=414"
-						target="_blank">免费试学</a> <!-- 登录用户已购买 --> <a class="greenbtn2"
-						href="http://xue.jikexueyuan.com/zhiye/course/buy/10/7"
-						target="_blank" lessonid="10" price="999.00" data-zhiye-id="7">立即报名</a>
+						<a class="greenbtn" href="${ctx }${frontPath}/train/video-${course.id}-0${urlSuffix }" target="_blank">免费试学</a> 
+						<!-- 登录用户已购买 --> 
+						<a class="greenbtn2" href="${ctx }${frontPath}/train/baoming-${course.id}-0${urlSuffix }" target="_blank" lessonid="${course.id }" price="${course.nprice }" data-zhiye-id="7">立即报名</a>
 						<p class="time">
 							<span>${course.students }人学习</span><span>时长 : ${course.timelength/60 } 小时</span><span>有效期 : ${course.days }
 								天 <i class="icon-ques2"> <span

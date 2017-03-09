@@ -65,4 +65,12 @@ public class FrontTrainController extends BaseController {
         model.addAttribute("courseType",courseType);
         return "modules/cms/front/themes/"+site.getTheme()+"/course/detail";
     }
+    @RequestMapping(value = "video-{id}-{type}${urlSuffix}")
+    public String video(@PathVariable String id,@PathVariable String type, Model model) {
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        Course course = CourseUtils.getCourseById(id);
+        model.addAttribute("course",course);
+        return "modules/cms/front/themes/"+site.getTheme()+"/course/video";
+    }
 }

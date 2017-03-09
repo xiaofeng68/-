@@ -27,16 +27,16 @@ var d_genId=function(){
 var doyoo={
 env:{
 secure:false,
-mon:'http://m9106.talk99.cn/monitor',
-chat:'http://chat7123b.talk99.cn/chat',
-file:'http://yun-static.soperson.com/131221',
+mon:'http://m9100.talk99.cn/monitor',
+chat:'http://chat7122a.talk99.cn/chat',
+file:'http://static.soperson.com/131221',
 compId:20001269,
 confId:10057537,
 vId:d_genId(),
 lang:'',
 fixFlash:0,
 subComp:0,
-_mark:'1551f4dec0ca5c52c5b49e50b4a063ecd5c7d74174d482a5e10e2582df2c499bdf9e8e469f40fb62'
+_mark:'9cdfdfea6f046170c21865ddedb1bd6ed8619a6cb9e1baab99857baad881fa9bd5c7d74174d482a51dda8ba532386e84ee7d2ddc96817e5c'
 }
 
 , monParam:{
@@ -78,21 +78,15 @@ if(typeof talk99Init == 'function'){
     talk99Init(doyoo);
 }
 if(!document.getElementById('doyoo_panel')){
-var supportJquery=typeof jQuery!='undefined';
-var doyooWrite=function(html){
-	document.writeln(html);
-}
-
-doyooWrite('<div id="doyoo_panel"></div>');
 
 
-doyooWrite('<div id="doyoo_monitor"></div>');
+
+document.write('<div id="doyoo_monitor"></div>');
 
 
-doyooWrite('<div id="talk99_message"></div>')
+document.write('<div id="doyoo_share" style="display:none;"></div>');
+document.write('<lin'+'k rel="stylesheet" type="text/css" href="http://static.soperson.com/131221/oms.css?161111"></li'+'nk>');
+document.write('<scr'+'ipt type="text/javascript" src="http://static.soperson.com/131221/oms.js?161125" charset="utf-8"></scr'+'ipt>');
 
-doyooWrite('<div id="doyoo_share" style="display:none;"></div>');
-doyooWrite('<lin'+'k rel="stylesheet" type="text/css" href="http://yun-static.soperson.com/131221/oms.css?170217"></li'+'nk>');
-doyooWrite('<scr'+'ipt type="text/javascript" src="http://yun-static.soperson.com/131221/oms.js?17021902" charset="utf-8"></scr'+'ipt>');
 }
 }

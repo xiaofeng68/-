@@ -771,11 +771,6 @@ margin-top: 10px;
   width: 220px;
   margin-right: 20px;
 }
-.passport-form .form-imgcode .layout-inner3{
-  position: relative;
-  float: left;
-  width: 100%;
-}
 .passport-form .form-imgcode .layout-inner{
   position: relative;
   float: left;
@@ -1002,13 +997,4 @@ margin-top: 10px;
 }
 .passport-popup  .phonedtm:hover i{
 	background-position: -15px -15px;
-}
-// 阿里验证码
-#verifyId {
-  box-sizing: content-box;
-}
-.nc-error-txt {
-      color: #ff5c00;
-      text-align: right;
-      line-height: 34px;
 }

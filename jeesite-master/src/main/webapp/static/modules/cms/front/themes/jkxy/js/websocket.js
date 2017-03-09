@@ -1,10 +1,7 @@
 var jkWebSocket = jkWebSocket || {};
-var protocol = 'https:' == document.location.protocol ? 'https://' : 'http://';
-var wsprotocol = 'https:' == document.location.protocol ? 'wss://' : 'ws://';
-
 jkWebSocket = {
-	adress: wsprotocol + "comet.jikexueyuan.com",
-	flash: protocol + "e.jikexueyuan.com/headerandfooter/js/WebSocketMain.swf",
+	adress:"ws://comet.jikexueyuan.com",
+	flash:"http://e.jikexueyuan.com/headerandfooter/js/WebSocketMain.swf",
 	init: function() {
 		this.unread();
 		this.bind();
@@ -19,19 +16,13 @@ jkWebSocket = {
 		$.ajax({
 			type: "get",
 			data:{'type':'jsonp'},
-			url:  protocol + "www.jikexueyuan.com/message/v1/unread?callback=?",
+			url: "http://www.jikexueyuan.com/message/v1/unread?callback=?",
 			success: function(data) {
 				if (data.code == 200) {
 					var numId = $('.unread-num');
 					if (data.data.unread_num != 0) {
 						$('#messagebox').removeClass('my-massage2').addClass('my-massage')
-
-						if (data.data.unread_num > 999) {
-							numId.html('999+');
-						} else {
-							numId.html(data.data.unread_num);
-						}
-
+						numId.html(data.data.unread_num);
 						$('.bounce1,.bounce2,.bounce3').css("display", "inline-block");
 						$('.news-list').show();
 						$('.nonews').hide()
@@ -57,7 +48,7 @@ jkWebSocket = {
 		});
 	},
 	//创建未读消息列表
-	creatMessageList: function(data) {
+	creatMessageList: function(data) {	
 		if(data.data.total_items<=0) return false;
 		$('.nonews').hide()
 		var newslist = $('.news-list');
@@ -77,7 +68,7 @@ jkWebSocket = {
 			var contentUrl = list.extra.content_url;
 			var name = list.title;
 			var content = list.content;
-
+			
 			var id = list.msg_id;
 			var time = jkWebSocket.creatTime(Date.parse((list.created_at).replace(/[-]/g,'/'))/1000);
 			var news = createNews(id, murl,contentUrl,name, time, content);
@@ -94,7 +85,7 @@ jkWebSocket = {
 			};
 			$.ajax({
 				type: "get",
-				url:  protocol + "www.jikexueyuan.com/message/v1/read?callback=?",
+				url: "http://www.jikexueyuan.com/message/v1/read?callback=?",
 				data: {
 					"ids": id,
 					"type":"jsonp"
@@ -115,7 +106,7 @@ jkWebSocket = {
 							$('.unread-num').html("&nbsp;");
 							$('.nonews').show();
 						}
-
+						
 					} else {
 						console.log(data.msg) //上线的时候记得屏蔽
 					}
@@ -148,7 +139,7 @@ jkWebSocket = {
 			var s = new Date(publishTime * 1000);
 			var Month = s.getMonth()+1;
 			return s.getFullYear()+"年"+Month+ "月" + s.getDate() + "日";
-		}
+		} 
 	},
 	//全部标记为已读
 	setread: function() {
@@ -162,7 +153,7 @@ jkWebSocket = {
 				var ids = idsAll.join(",")
 				$.ajax({
 					type: "get",
-					url:  protocol + "www.jikexueyuan.com/message/v1/read?callback=?",
+					url: "http://www.jikexueyuan.com/message/v1/read?callback=?",
 					data: {
 						"ids": ids,
 						'type':'jsonp'
@@ -191,7 +182,7 @@ jkWebSocket = {
 	messageList: function() {
 		$.ajax({
 			type: "get",
-			url:  protocol + "www.jikexueyuan.com/message/v1/unread_list?callback=?",
+			url: "http://www.jikexueyuan.com/message/v1/unread_list?callback=?",
 			success: function(data) {
 				if (data.code == 200) {
 					var newslist = $('.news-list');
@@ -301,7 +292,6 @@ jkWebSocket = {
 	}
 
 }
-/*
 $(function() {
 	var uid = $.cookie("uid");
 	if (uid) {
@@ -310,4 +300,3 @@ $(function() {
 		//console.log("未登录")
 	}
 })
-*/
