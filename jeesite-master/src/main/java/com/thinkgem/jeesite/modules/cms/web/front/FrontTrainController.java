@@ -52,6 +52,17 @@ public class FrontTrainController extends BaseController {
         model.addAttribute("courseType",courseType);
         return "modules/cms/front/themes/"+site.getTheme()+"/course/"+code;
     }
+    @RequestMapping(value = "classify-{code}-{id}${urlSuffix}")
+    public String classify(@PathVariable String code,@PathVariable String id, Model model) {
+        if (StringUtils.isEmpty(code)){
+            return "redirect:"+Global.getFrontPath();
+        }
+        Site site = CmsUtils.getSite(Site.defaultSiteId());
+        model.addAttribute("site", site);
+        CourseType courseType = CourseTypeUtils.getCourseTypeById(id);
+        model.addAttribute("courseType",courseType);
+        return "modules/cms/front/themes/"+site.getTheme()+"/classify/"+code;
+    }
     /**   
      * @说明: 跳转到对应的课程页面
      */
