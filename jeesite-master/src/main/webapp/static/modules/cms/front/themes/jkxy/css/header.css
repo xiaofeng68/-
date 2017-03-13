@@ -31,6 +31,7 @@ input::-ms-clear {
 #header a,
 #header i,
 #header h3 {
+	white-space: nowrap;
 	text-decoration: none;
 	padding: 0px;
 	margin: 0px;
