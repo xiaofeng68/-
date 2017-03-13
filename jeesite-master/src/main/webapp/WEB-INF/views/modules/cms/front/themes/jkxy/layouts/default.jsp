@@ -33,14 +33,12 @@
 							</c:forEach>
 							</div>
 						</li>
-						<li>会员课程<i class="arrow-icon"></i>
+						<c:set var="courseType13" value="${fns:getCourseTypeById(13)}"></c:set>
+						<li>${courseType13.name }<i class="arrow-icon"></i>
 							<div class="submenu vip-lesson">
-								<a href="http://www.jikexueyuan.com/course/"><i class="kck-icon"></i>课程库<span>2500+</span></a> 
-								<a href="http://ke.jikexueyuan.com/zhiye/"><i class="zyljt-icon"></i>职业路径图<span>9</span></a> 
-								<a href="http://www.jikexueyuan.com/path/"><i class="zstxt-icon"></i>知识体系图<span>24</span></a> 
-								<a href="http://ke.jikexueyuan.com/xilie/"><i class="xlkc-icon"></i>系列课程<span>101</span></a> 
-								<a href="http://www.jikexueyuan.com/tag/"><i class="kcbq-icon"></i>课程标签<span>4000+</span></a>
-								<a href="http://www.jikexueyuan.com/vip/"><i class="vip-icon"></i>VIP会员购买<span>30/月 260/年</span></a>
+							<c:forEach var="courseType" items="${fns:getCourseTypes(courseType13.id)}">
+								<a href="${ctx }/train/classify-${courseType.code}-${courseType.id}${urlSuffix}"><i class="${courseType.code }-icon"></i>${courseType.name }<span></span></a> 
+							</c:forEach>								
 							</div>
 						</li>
 						<li>极客社区<i class="arrow-icon"></i>
@@ -192,6 +190,35 @@
 			</a> 
 			<a href="javascript:;" id="diaochaid" class="diaocha"></a>
 		</div>
+		<script src="${ctxStaticTheme}/js/footer.min.js"></script>
 	</div>
+	<script type="text/javascript">LazyLoad=function(e){function t(t,n){var s,r=e.createElement(t);for(s in n)n.hasOwnProperty(s)&&r.setAttribute(s,n[s]);return r}function n(e){var t,n,s=i[e];s&&(t=s.callback,n=s.urls,n.shift(),u=0,n.length||(t&&t.call(s.context,s.obj),i[e]=null,f[e].length&&r(e)))}function s(){var t=navigator.userAgent;o={async:e.createElement("script").async===!0},(o.webkit=/AppleWebKit\//.test(t))||(o.ie=/MSIE|Trident/.test(t))||(o.opera=/Opera/.test(t))||(o.gecko=/Gecko\//.test(t))||(o.unknown=!0)}function r(r,u,h,g,d){var p,y,m,b,k,v,j=function(){n(r)},w="css"===r,E=[];if(o||s(),u)if(u="string"==typeof u?[u]:u.concat(),w||o.async||o.gecko||o.opera)f[r].push({urls:u,callback:h,obj:g,context:d});else for(p=0,y=u.length;y>p;++p)f[r].push({urls:[u[p]],callback:p===y-1?h:null,obj:g,context:d});if(!i[r]&&(b=i[r]=f[r].shift())){for(l||(l=e.head||e.getElementsByTagName("head")[0]),k=b.urls,p=0,y=k.length;y>p;++p){if(v=k[p],w?m=o.gecko?t("style"):t("link",{href:v,rel:"stylesheet"}):(m=t("script",{src:v}),m.async=!1),m.className="lazyload",m.setAttribute("charset","utf-8"),o.ie&&!w&&"onreadystatechange"in m&&!("draggable"in m))m.onreadystatechange=function(){/loaded|complete/.test(m.readyState)&&(m.onreadystatechange=null,j())};else if(w&&(o.gecko||o.webkit))if(o.webkit){var T;if(b.urls[p]=m.href,T=c()){p--,y=k.length;continue}}else m.innerHTML='@import "'+v+'";',a(m);else m.onload=m.onerror=j;E.push(m)}var A=document.createDocumentFragment();for(p=0,y=E.length;y>p;++p)A.appendChild(E[p]);var x;return"css"===r?x=l:"js"===r&&(x=document.getElementById("pages-container")||l),x.appendChild(A),E}}function a(e){var t;try{t=!!e.sheet.cssRules}catch(s){return u+=1,void(200>u?setTimeout(function(){a(e)},50):t&&n("css"))}n("css")}function c(){var e,t=i.css,s=!1;if(t){for(e=h.length;--e>=0;)if(h[e].href===t.urls[0]){s=!0,n("css");break}u+=1,t&&(200>u?setTimeout(c,50):n("css"))}return s}var o,l,i={},u=0,f={css:[],js:[]},h=e.styleSheets;return{css:function(e,t,n,s){r("css",e,t,n,s)},js:function(e,t,n,s){r("js",e,t,n,s)}}}(this.document);</script>
+	<script type="text/javascript">
+		var _ready = false;
+		_list = [];
+		_when = function(cb) {
+			_ready?cb():_list.push(cb);
+		};
+		LazyLoad.js(['${ctxStaticTheme }/js/TweenMax.min_5a7da72.js', 
+		             '${ctxStaticTheme }/js/common_sync0_libs_1a4ebbf.js', 
+		             '${ctxStaticTheme }/js/setcookie_51991d5.js', 
+		             '${ctxStaticTheme }/js/swfobject_5fb5452.js', 
+		             '${ctxStaticTheme }/js/common_sync1_libs_cf97d43.js', 
+		             '${ctxStaticTheme }/js/jquery.pager_c1811c8.js', 
+		             '${ctxStaticTheme }/js/lessonlist_614ec49.js', 
+		             '${ctxStaticTheme }/js/loading_197f16e.js', 
+		             '${ctxStaticTheme }/js/PagerDemo_e88048d.js', 
+		             '${ctxStaticTheme }/js/category_b70d134.js', 
+		             '${ctxStaticTheme }/js/cleft_7128b88.js'], function () {!function() {
+					require("common:widget/loading/loading.js").init();
+					$('#changeid').fadeIn();
+				}();
+		!function() {
+			require("common:widget/pager/PagerDemo.js").init(1,11,24);
+		}();
+		!function() {
+		    require('course:widget/category/category.js').init();
+		}();;_ready=true;var _item; while((_item=_list.shift())){_item();}});
+		</script>
 </body>
 </html>
