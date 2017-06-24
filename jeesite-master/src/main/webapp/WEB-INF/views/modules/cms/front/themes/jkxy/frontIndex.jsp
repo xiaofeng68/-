@@ -85,7 +85,7 @@
 			<h2>职业学院</h2>
 			<ul>
 			<c:forEach items="${fns:getTrains(3)}" var="train" varStatus="status">
-				<li class="${train.code }"><a href="${ctx }/train/train-${train.code}${urlSuffix}"> <img src="${train.img }"> <i></i> <span>${train.name }</span></a></li>
+				<li class="${train.code }"><a href="${ctx }/train/${train.remarks}${urlSuffix}"> <img src="${train.img }"> <i></i> <span>${train.name }</span></a></li>
 			</c:forEach>				
 			</ul>
 		</section>

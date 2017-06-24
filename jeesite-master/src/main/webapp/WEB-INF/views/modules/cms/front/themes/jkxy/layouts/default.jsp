@@ -28,7 +28,7 @@
 							<c:forEach var="courseType" items="${fns:getCourseTypes(courseType1.id)}">
 								<h3>${courseType.name }</h3>
 								<c:forEach var="type" items="${fns:getCourseTypes(courseType.id)}">
-								<a href="${ctx }/train/course-${type.code}-${type.id}${urlSuffix}"><i class="${type.code }-icon"></i>Web 前端工程师</a>
+								<a href="${ctx }/train/course-web-${type.id}${urlSuffix}"><i class="${type.code }-icon"></i>${type.name }</a>
 								</c:forEach>
 							</c:forEach>
 							</div>
