@@ -51,7 +51,7 @@
 			<label class="control-label">图片：</label>
 			<div class="controls">
 				<input type="hidden" id="image" name="img" value="${train.img}" />
-				<sys:ckfinder input="image" type="thumb" uploadPath="/tran/train" selectMultiple="false"/>
+				<sys:ckfinder input="image" type="images" uploadPath="/tran/train" selectMultiple="false"/>
 			</div>
 		</div>
 		<div class="control-group">

@@ -1,9 +1,11 @@
 package com.thinkgem.jeesite.modules.tran.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.tran.dao.CourseTypeDao;
 import com.thinkgem.jeesite.modules.tran.dao.TeacherDao;
 import com.thinkgem.jeesite.modules.tran.entity.CourseType;
@@ -34,6 +36,28 @@ public class CourseTypeUtils {
 	    }
 	    return list;
 	}
+	@SuppressWarnings("unchecked")
+    public static List<CourseType> getNative(String id){
+	    List<CourseType> list = (List<CourseType>) CacheUtils.get(CACHE_TRAIN_MAP+":d:"+id);
+	    if(list==null){
+	    	CourseType ctype = courseTypeDao.get(id);
+	    	if(ctype!=null){
+	    		list = new ArrayList<CourseType>();
+	    		String ids = ctype.getParentIds();
+	    		String[] idArr = ids.split(",");
+	    		for(String pid : idArr){
+	    			if(StringUtils.isEmpty(pid)) continue;
+	    			CourseType ptype = courseTypeDao.get(pid);
+	    			if(ptype!=null && !"会员课程".equals(ptype.getName()))
+	    				list.add(ptype);
+	    		}
+	    		list.add(ctype);
+	    		CacheUtils.put(CACHE_TRAIN_MAP+":d:"+id, list);
+	    	}
+	    }
+	    return list;
+	}
+	
     public static CourseType getCourseTypeById(String id){
         CourseType courseType = (CourseType) CacheUtils.get(CACHE_TRAIN_MAP+":"+id);
         if(courseType==null){
@@ -55,6 +79,7 @@ public class CourseTypeUtils {
 	public static void clearCache(CourseType courseType){
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":"+courseType.getId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":p:"+courseType.getParentId());
+	    CacheUtils.remove(CACHE_TRAIN_MAP+":d:"+courseType.getParentId());
 	    CacheUtils.remove(CACHE_TRAIN_MAP+":type:"+courseType.getId());
 	}
 }

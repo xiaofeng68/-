@@ -78,7 +78,7 @@
 		<include refid="courseTypeJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-			AND a.parent_ids LIKE #{parentIds}
+			AND a.parent_ids LIKE CONCAT('', #{parentIds}, ',%')
 		</where>
 		ORDER BY a.sort ASC
 	</select>

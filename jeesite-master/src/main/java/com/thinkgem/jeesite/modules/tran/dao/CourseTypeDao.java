@@ -14,5 +14,4 @@ import com.thinkgem.jeesite.modules.tran.entity.CourseType;
  */
 @MyBatisDao
 public interface CourseTypeDao extends TreeDao<CourseType> {
-	
 }

@@ -21,6 +21,10 @@
 		a.del_flag AS "delFlag",
 		a.type AS "courseType.id",
 		a.sort AS "sort",
+		a.state1 AS "state1",
+		a.state2 AS "state2",
+		a.state3 AS "state3",
+		a.state4 AS "state4",
 		a.img AS "img",
 		u2.name AS "courseType.name",
 		u3.name AS "teacher.name",
@@ -57,8 +61,8 @@
 			<if test="teacher!=null and teacher.id != null and teacher.id != ''">
 				AND a.teacherid = #{teacher.id}
 			</if>
-			<if test="courseType!=null and courseType.id != null and courseType.id != ''">
-				AND a.type = #{courseType.id}
+			<if test="courseType!=null and courseType.parentIds != null and courseType.parentIds != ''">
+				AND a.type in (${courseType.parentIds})
 			</if>
 		</where>
 		<choose>
@@ -110,7 +114,11 @@
 			type,
 			</if>
 			sort,
-			img
+			img,
+			state1,
+			state2,
+			state3,
+			state4
 		) VALUES (
 			#{name},
 			#{teacher.id},
@@ -131,7 +139,11 @@
 			#{courseType.id},
 			</if>
 			#{sort},
-			#{img}
+			#{img},
+			#{state1},
+			#{state2},
+			#{state3},
+			#{state4}
 		)
 	</insert>
 	
@@ -153,7 +165,11 @@
 			type = #{courseType.id},
 			</if>
 			sort = #{sort},
-			img = #{img}
+			img = #{img},
+			state1 = #{state1},
+			state2 = #{state2},
+			state3 = #{state3},
+			state4 = #{state4}
 		WHERE id = #{id}
 	</update>
 	

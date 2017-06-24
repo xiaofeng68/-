@@ -276,6 +276,14 @@
     <example>${fns:getCourseTypes(pid)}</example>  
   </function>
   <function>
+    <description>获取课程标签导航</description>
+    <name>getNative</name>
+    <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseTypeUtils</function-class>
+    <function-signature>java.util.List getNative(java.lang.String)</function-signature>
+    <example>${fns:getNative(pid)}</example>  
+  </function>
+  
+  <function>
     <description>获取所有课程标签</description>
     <name>getAllCourses</name>
     <function-class>com.thinkgem.jeesite.modules.tran.utils.CourseUtils</function-class>

@@ -29,7 +29,7 @@
 			<section class="jk-login">
 
 				<div class="userInfo">
-					<a href="http://my.jikexueyuan.com/setting/user"> <img
+					<a href="#"> <img
 						src="${ctxStaticTheme }/images/headpic_8ce0f6d.jpg" class="userImg">
 					</a> 
 					<span class="userName">
